@@ -241,7 +241,7 @@ PrefabInstance:
     - target: {fileID: 6490973624215975798, guid: b4486c31b5d7801478a67bcbdd28262c,
         type: 3}
       propertyPath: m_RequestedTrackingOriginMode
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6744171333814253300, guid: b4486c31b5d7801478a67bcbdd28262c,
         type: 3}
