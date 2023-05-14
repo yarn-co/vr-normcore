@@ -20,11 +20,11 @@ public class FPSDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float current = (int)(1f / Time.deltaTime);
+        FPS = (int)(1f / Time.deltaTime);
 
         if (Time.frameCount % 50 == 0) {
 
-            FPSText.text = current.ToString();
+            FPSText.text = FPS.ToString();
         }
     }
 }
