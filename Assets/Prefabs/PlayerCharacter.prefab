@@ -96,6 +96,9 @@ GameObject:
   - component: {fileID: 2093522718476368875}
   - component: {fileID: 9099641995801738202}
   - component: {fileID: 3120661169389479021}
+  - component: {fileID: 3758289855988667889}
+  - component: {fileID: 1029012570908348746}
+  - component: {fileID: 7337680557881857719}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Untagged
@@ -143,6 +146,9 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: 2093522718476368875}
   - {fileID: 3120661169389479021}
+  - {fileID: 3758289855988667889}
+  - {fileID: 1029012570908348746}
+  - {fileID: 7337680557881857719}
   SimulationBehaviours: []
 --- !u!114 &2093522718476368875
 MonoBehaviour:
@@ -158,6 +164,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   PlayerSpeed: 2
+  JumpForce: 5
+  GravityValue: -9.81
   Camera: {fileID: 0}
 --- !u!143 &9099641995801738202
 CharacterController:
@@ -205,3 +213,47 @@ MonoBehaviour:
     RotTeleportRadians: 1.5
   UseLegacySharedModeInterpolation: 0
   TargetInterpolationDelay: 0.03
+--- !u!114 &3758289855988667889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6526670296363832617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdbedd9fac684ad4b9fc1ac63f9acbff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  MeshRenderer: {fileID: 7072449369064037651}
+  _NetworkedColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &1029012570908348746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6526670296363832617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac4a301b90910984ea462279a5a66f4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  _NetworkedHealth: 100
+--- !u!114 &7337680557881857719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6526670296363832617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b55eb8e1c9748c5408930b4b08047949, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  Damage: 10
+  PlayerMovement: {fileID: 2093522718476368875}
