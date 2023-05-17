@@ -6,13 +6,17 @@ using Unity.XR.CoreUtils;
 using UnityEngine.XR;
 using UnityEngine.XR.Management;
 using TMPro;
+using Fusion;
 
 public class Shuffleboard : MonoBehaviour
 {
-    
+   
+   
     public GameObject puck;
 
     private GameObject[] pucks;
+
+    public GameObject testCube;
 
     void Awake(){
 
@@ -42,6 +46,8 @@ public class Shuffleboard : MonoBehaviour
         GameObject newPuck = Instantiate(puck, new Vector3(0, 1, 0.3f), Quaternion.identity);
 
         newPuck.GetComponent<Puck>().team = team;
+
+        //Game.Instance.runner.Spawn(testCube, new Vector3(0, 1, 0.3f), Quaternion.identity);
     }
 
     public void ClearPucks(){

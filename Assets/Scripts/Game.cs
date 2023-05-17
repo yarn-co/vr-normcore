@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fusion;
 
 public class Game : MonoBehaviour
 {    
     public static Game Instance;
+
+    public NetworkRunner runner;
 
     public bool started;
     
