@@ -39,6 +39,10 @@ namespace Fusion.XR.Shared.Rig
         public InputActionProperty indexAction;
         public int handPose = 0;
 
+        [Header("Controller button input")]
+        public InputActionProperty primaryButtonAction;
+        public InputActionProperty secondaryButtonAction;
+
         [Header("Hand interaction input")]
         public InputActionProperty grabAction;
         public float grabThreshold = 0.5f;
@@ -54,6 +58,9 @@ namespace Fusion.XR.Shared.Rig
             gripAction.EnableWithDefaultXRBindings(side: side, new List<string> { "grip" });
             // We separate the hand grip action and the grab interaction action, as we may want to use different action for some hardware
             grabAction.EnableWithDefaultXRBindings(side: side, new List<string> { "grip" });
+
+            primaryButtonAction.EnableWithDefaultXRBindings(side: side, new List<string> { "primary" });
+            secondaryButtonAction.EnableWithDefaultXRBindings(side: side, new List<string> { "secondary" });
         }
 
         protected virtual void Update()

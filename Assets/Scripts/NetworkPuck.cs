@@ -76,6 +76,7 @@ public class NetworkPuck : NetworkBehaviour
 
             if (!obj.HasStateAuthority)
             {
+                
                 obj.RequestStateAuthority();
             }
         }

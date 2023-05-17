@@ -62,6 +62,8 @@ public class NetworkShuffleboard : MonoBehaviour
 
     public void Reset()
     {
+        ClearPucks();
 
+        Game.Instance.GetComponent<Recenter>().Reset();
     }
 }

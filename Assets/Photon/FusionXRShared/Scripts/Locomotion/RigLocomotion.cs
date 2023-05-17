@@ -101,7 +101,8 @@ namespace Fusion.XR.Shared.Locomotion
         {
             timeStarted = Time.time;
             rotating = true;
-            yield return rig.FadedRotate(angle);
+            //yield return rig.FadedRotate(angle);
+            yield return rig.FastRotate(angle);
             rotating = false;
         }
 

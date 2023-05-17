@@ -61,6 +61,8 @@ namespace Fusion.XR.Shared.Rig
 
         protected virtual void ApplyInputToRigParts(RigInput input)
         {
+            //Debug.Log("NetworkRig " + input.rightHandPosition);
+            
             transform.position = input.playAreaPosition;
             transform.rotation = input.playAreaRotation;
             leftHand.transform.position = input.leftHandPosition;

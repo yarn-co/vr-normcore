@@ -94,6 +94,14 @@ namespace Fusion.XR.Shared.Rig
             if (headset.fader) yield return headset.fader.WaitBlinkDuration();
             if (headset.fader) yield return headset.fader.FadeOut();
         }
+
+        public virtual IEnumerator FastRotate(float angle)
+        {
+            //if (headset.fader) yield return headset.fader.FadeIn();
+            Rotate(angle);
+            //if (headset.fader) yield return headset.fader.WaitBlinkDuration();
+            if (headset.fader) yield return null;
+        }
         #endregion
 
         #region INetworkRunnerCallbacks
