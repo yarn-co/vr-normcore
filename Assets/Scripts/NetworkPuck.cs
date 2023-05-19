@@ -6,16 +6,26 @@ using Fusion;
 using Fusion.XR.Shared.Grabbing;
 
 [RequireComponent(typeof(NetworkGrabbable))]
+[RequireComponent(typeof(Grabbable))]
 public class NetworkPuck : NetworkBehaviour
 {
     public Material TeamZeroMaterial;
     public Material TeamOneMaterial;
 
     private MeshRenderer myRenderer;
+    private Rigidbody myBody;
 
     public TextMeshPro text; 
 
     public int side = 1;
+
+    public AudioSource dragSound;
+    public AudioSource tableNockSound;
+
+    public bool isOnTable = false;
+    public float velocity;
+
+    private NetworkShuffleboard shuffleboard;
 
     [Networked(OnChanged = nameof(TeamChanged))]
     public int Team { get; set; }
@@ -31,20 +41,34 @@ public class NetworkPuck : NetworkBehaviour
     void Awake()
     {
         myRenderer = gameObject.GetComponentInChildren<MeshRenderer>();
+        myBody = gameObject.GetComponent<Rigidbody>();
 
-        var grabbable = GetComponent<NetworkGrabbable>();
+        shuffleboard = Game.Instance.GetComponent<NetworkShuffleboard>();
 
+        NetworkGrabbable grabbable = GetComponent<NetworkGrabbable>();
         grabbable.onDidGrab.AddListener(OnDidGrab);
         grabbable.grabbable.onWillGrab.AddListener(OnWillGrab);
     }
 
-    void Start(){
-
+    void Start()
+    {
         Debug.Log("NetworkPuck Start");
 
         SetTeam(Team);
 
         text.text = "";
+    }
+
+    private void Update()
+    {
+        velocity = myBody.velocity.magnitude;
+
+        Debug.Log("Velocity: " + velocity);
+
+        if (isOnTable)
+        {
+            dragSound.volume = velocity * 0.4f;
+        }
     }
 
     public void SetTeam(int t)
@@ -66,25 +90,35 @@ public class NetworkPuck : NetworkBehaviour
 
     void OnWillGrab(Grabber newGrabber)
     {
-        Debug.Log("Give me all the pucks");
+        shuffleboard.OwnAllPucks();
+    }
 
-        GameObject[] pucks = GameObject.FindGameObjectsWithTag("Puck");
+    private void OnCollisionEnter(Collision other)
+    {
+        Debug.Log("Puck Collision " + other);
 
-        foreach (GameObject puckX in pucks)
+        tableNockSound.Play();
+
+        if (other.gameObject.CompareTag("Table"))
         {
-            NetworkObject obj = puckX.GetComponent<NetworkPuck>().Object;
+            isOnTable = true;
+            dragSound.volume = 0;
+            dragSound.Play();
+        }
+    }
 
-            if (!obj.HasStateAuthority)
-            {
-                
-                obj.RequestStateAuthority();
-            }
+    private void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject.CompareTag("Table"))
+        {
+            isOnTable = false;
+            dragSound.Stop();
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "ScoreZone"){
+        if(other.CompareTag("ScoreZone")){
 
             var scoreZone = other.GetComponent<ScoreZone>();
 

@@ -9,6 +9,7 @@ TagManager:
   - Puck
   - ScoreZone
   - Hand
+  - Table
   layers:
   - Default
   - TransparentFX
