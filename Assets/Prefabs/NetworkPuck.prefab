@@ -618,7 +618,6 @@ GameObject:
   - component: {fileID: 5344195831004715781}
   - component: {fileID: 970385967630259258}
   - component: {fileID: 6618894977922354934}
-  - component: {fileID: 3034360216503635296}
   - component: {fileID: 5368579742653588305}
   - component: {fileID: 5656920958237822889}
   m_Layer: 0
@@ -712,7 +711,6 @@ MonoBehaviour:
   - {fileID: 5344195831004715787}
   - {fileID: 5344195831004715781}
   - {fileID: 970385967630259258}
-  - {fileID: 3034360216503635296}
   - {fileID: 5368579742653588305}
   SimulationBehaviours: []
 --- !u!114 &5344195831004715781
@@ -777,21 +775,6 @@ MonoBehaviour:
   onWillGrab:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3034360216503635296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5344195831004715782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ef8330517f80e348847dd4c107d154d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
-  allowProxyPhysics: 1
-  transferOwnershipOnCollision: 1
 --- !u!114 &5368579742653588305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -808,10 +791,11 @@ MonoBehaviour:
   TeamZeroMaterial: {fileID: 2100000, guid: 7ea5e490258cf2243aa55ee625fc1fc8, type: 2}
   TeamOneMaterial: {fileID: 2100000, guid: cf570e68592cf7049b60c60b6ee3dc13, type: 2}
   text: {fileID: 2552320152469681444}
-  side: 1
   dragSound: {fileID: 2178377965391740002}
   tableNockSound: {fileID: 5656920958237822889}
-  isOnTable: 0
+  _isOnTable: 0
+  _velocity: 0
+  _side: 1
   _Team: 0
 --- !u!82 &5656920958237822889
 AudioSource:

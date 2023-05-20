@@ -44,26 +44,39 @@ public class NetworkShuffleboard : MonoBehaviour
         }
     }
 
-    public void MakePuckForZero()
+    public void MakePuckForRedOne()
     {
-        MakePuck(0);
+        MakePuck(0,1);
     }
 
-    public void MakePuckForOne()
+    public void MakePuckForBlueOne()
     {
-        MakePuck(1);
+        MakePuck(1,1);
     }
 
-    public void MakePuck(int team)
+    public void MakePuckForRedTwo()
     {
+        MakePuck(0, 2);
+    }
 
-        //GameObject newPuck = Instantiate(puck, new Vector3(0, 1, 0.3f), Quaternion.identity);
+    public void MakePuckForBlueTwo()
+    {
+        MakePuck(1, 2);
+    }
 
-        //newPuck.GetComponent<Puck>().team = team;
+    public void MakePuck(int team, int side)
+    {
+        float zPos = 0.4f;
 
-        NetworkObject newPuck = Game.Instance.runner.Spawn(puck, new Vector3(0, 1, 0.3f), Quaternion.identity);
+        if(side == 2)
+        {
+            zPos = 3.2f;
+        }
+
+        NetworkObject newPuck = Game.Instance.runner.Spawn(puck, new Vector3(0, 1, zPos), Quaternion.identity);
 
         newPuck.GetComponent<NetworkPuck>().Team = team;
+        newPuck.GetComponent<NetworkPuck>().Side = side;
     }
 
     public void OwnAllPucks()
@@ -76,10 +89,12 @@ public class NetworkShuffleboard : MonoBehaviour
         {
             NetworkObject obj = puckX.GetComponent<NetworkPuck>().Object;
 
-            if (!obj.HasStateAuthority && puckX.GetComponent<Grabbable>().currentGrabber != null)
-            {
+            Debug.Log("Current Grabber: " + puckX.GetComponent<Grabbable>().currentGrabber);
+
+            //if (!obj.HasStateAuthority && puckX.GetComponent<Grabbable>().currentGrabber != null)
+            //{
                 obj.RequestStateAuthority();
-            }
+            //}
         }
     }
 
