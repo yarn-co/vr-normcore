@@ -10,6 +10,8 @@ TagManager:
   - ScoreZone
   - Hand
   - Table
+  - Influence
+  - Rig
   layers:
   - Default
   - TransparentFX

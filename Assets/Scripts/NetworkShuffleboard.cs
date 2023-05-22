@@ -21,9 +21,17 @@ public class NetworkShuffleboard : MonoBehaviour
 
     public InputActionProperty secondaryButtonAction;
 
+    public GameObject Rig;
+
+    public Vector3 smallScale = new Vector3(0.1f, 0.1f, 0.1f);
+
+    public GameObject Player;
+
+    public bool buttonPress = false;
+
     void Awake()
     {
-
+        Rig = GameObject.FindGameObjectWithTag("Rig");
     }
 
     void Start()
@@ -37,10 +45,36 @@ public class NetworkShuffleboard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Player == null)
+        {
+            Player = GameObject.Find("NetworkHotdogRig(Clone)");
+        }
+        
         if (secondaryButtonAction != null && secondaryButtonAction.action != null && secondaryButtonAction.action.ReadValue<float>() == 1)
         {
-            OwnAllPucks();
+            if (!buttonPress)
+            {
+                buttonPress = true;
+
+                PlayerScale playerScale = Player.GetComponent<PlayerScale>();
+
+                if (playerScale.Scale == 1)
+                {
+                    playerScale.Scale = 0.1f;
+                }
+                else
+                {
+                    playerScale.Scale = 1;
+                }
+            }
+            
+
+            //OwnAllPucks();
             //Game.Instance.GetComponent<Recenter>().Reset();
+        }
+        else
+        {
+            buttonPress = false;
         }
     }
 
@@ -89,12 +123,16 @@ public class NetworkShuffleboard : MonoBehaviour
         {
             NetworkObject obj = puckX.GetComponent<NetworkPuck>().Object;
 
-            Debug.Log("Current Grabber: " + puckX.GetComponent<Grabbable>().currentGrabber);
+            NetworkGrabbable networkGrabbable = puckX.GetComponent<NetworkGrabbable>();
 
-            //if (!obj.HasStateAuthority && puckX.GetComponent<Grabbable>().currentGrabber != null)
-            //{
+            Debug.Log("Current Grabber: " + (networkGrabbable.CurrentGrabber == null));
+
+            if (!networkGrabbable.isTakingAuthority && networkGrabbable.CurrentGrabber == null)
+            {
+                Debug.Log("Requesting Authority of " + obj);
+                
                 obj.RequestStateAuthority();
-            //}
+            }
         }
     }
 

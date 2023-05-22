@@ -201,15 +201,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: PhotonDummy
       objectReference: {fileID: 0}
+    - target: {fileID: 6126910760401853945, guid: 81224343ceee4c64e8c44f57bddbbd1e,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -5716582365342782929, guid: 2973e9850c971a846bc678d8c436bc37,
+        type: 3}
     - target: {fileID: 7109199513948672604, guid: 81224343ceee4c64e8c44f57bddbbd1e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.633
+      value: 0.585
       objectReference: {fileID: 0}
     - target: {fileID: 7109199513948672604, guid: 81224343ceee4c64e8c44f57bddbbd1e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.005
+      value: 0.009
       objectReference: {fileID: 0}
     - target: {fileID: 7109199513948672604, guid: 81224343ceee4c64e8c44f57bddbbd1e,
         type: 3}
@@ -238,6 +244,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81224343ceee4c64e8c44f57bddbbd1e, type: 3}
+--- !u!23 &7173193719022338782 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8278706375884122419, guid: 81224343ceee4c64e8c44f57bddbbd1e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1256383593382833133}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2484170574470442022
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -290,7 +302,7 @@ PrefabInstance:
     - target: {fileID: 82848160101703958, guid: 477f02bca0b59924aa984e240cb28cc4,
         type: 3}
       propertyPath: NetworkedBehaviours.Array.size
-      value: 12
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 82848160101703958, guid: 477f02bca0b59924aa984e240cb28cc4,
         type: 3}
@@ -301,45 +313,55 @@ PrefabInstance:
         type: 3}
       propertyPath: NetworkedBehaviours.Array.data[3]
       value: 
-      objectReference: {fileID: 8508077403588356044}
+      objectReference: {fileID: -6415977974305907219}
     - target: {fileID: 82848160101703958, guid: 477f02bca0b59924aa984e240cb28cc4,
         type: 3}
       propertyPath: NetworkedBehaviours.Array.data[4]
       value: 
-      objectReference: {fileID: 2549000073931524548}
+      objectReference: {fileID: 1467725643151745446}
     - target: {fileID: 82848160101703958, guid: 477f02bca0b59924aa984e240cb28cc4,
         type: 3}
       propertyPath: NetworkedBehaviours.Array.data[5]
       value: 
-      objectReference: {fileID: 2549000073931524550}
+      objectReference: {fileID: 8508077403588356044}
     - target: {fileID: 82848160101703958, guid: 477f02bca0b59924aa984e240cb28cc4,
         type: 3}
       propertyPath: NetworkedBehaviours.Array.data[6]
       value: 
-      objectReference: {fileID: 2549000074096746597}
+      objectReference: {fileID: 2549000073931524548}
     - target: {fileID: 82848160101703958, guid: 477f02bca0b59924aa984e240cb28cc4,
         type: 3}
       propertyPath: NetworkedBehaviours.Array.data[7]
       value: 
-      objectReference: {fileID: 2549000074096746599}
+      objectReference: {fileID: 2549000073931524550}
     - target: {fileID: 82848160101703958, guid: 477f02bca0b59924aa984e240cb28cc4,
         type: 3}
       propertyPath: NetworkedBehaviours.Array.data[8]
       value: 
-      objectReference: {fileID: 2484170574570388998}
+      objectReference: {fileID: 2549000074096746597}
     - target: {fileID: 82848160101703958, guid: 477f02bca0b59924aa984e240cb28cc4,
         type: 3}
       propertyPath: NetworkedBehaviours.Array.data[9]
       value: 
-      objectReference: {fileID: 2549000074207914367}
+      objectReference: {fileID: 2549000074096746599}
     - target: {fileID: 82848160101703958, guid: 477f02bca0b59924aa984e240cb28cc4,
         type: 3}
       propertyPath: NetworkedBehaviours.Array.data[10]
       value: 
-      objectReference: {fileID: 2549000074207914337}
+      objectReference: {fileID: 2484170574570388998}
     - target: {fileID: 82848160101703958, guid: 477f02bca0b59924aa984e240cb28cc4,
         type: 3}
       propertyPath: NetworkedBehaviours.Array.data[11]
+      value: 
+      objectReference: {fileID: 2549000074207914367}
+    - target: {fileID: 82848160101703958, guid: 477f02bca0b59924aa984e240cb28cc4,
+        type: 3}
+      propertyPath: NetworkedBehaviours.Array.data[12]
+      value: 
+      objectReference: {fileID: 2549000074207914337}
+    - target: {fileID: 82848160101703958, guid: 477f02bca0b59924aa984e240cb28cc4,
+        type: 3}
+      propertyPath: NetworkedBehaviours.Array.data[13]
       value: 
       objectReference: {fileID: 2484170574958770853}
     - target: {fileID: 82848160101703958, guid: 477f02bca0b59924aa984e240cb28cc4,
@@ -355,7 +377,12 @@ PrefabInstance:
     - target: {fileID: 82848160101703959, guid: 477f02bca0b59924aa984e240cb28cc4,
         type: 3}
       propertyPath: m_Name
-      value: NetworkRigWithHandsandPhotonDummy Variant
+      value: NetworkHotdogRig
+      objectReference: {fileID: 0}
+    - target: {fileID: 82848160101703959, guid: 477f02bca0b59924aa984e240cb28cc4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 82848160101704043, guid: 477f02bca0b59924aa984e240cb28cc4,
         type: 3}
@@ -561,6 +588,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-6415977974305907219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2549000073306557745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdbedd9fac684ad4b9fc1ac63f9acbff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  MeshRenderer: {fileID: 7173193719022338782}
+  _NetworkedColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1323857583324475854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -579,6 +621,22 @@ MonoBehaviour:
     Max: 1000
     SpeedUpPerc: 5
   restartOnDeviceChange: 1
+--- !u!114 &1467725643151745446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2549000073306557745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aa2c57cfe4d56545bf17923709522cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  MeshRenderer: {fileID: 0}
+  _NetworkedScale: 0
+  Rig: {fileID: 0}
 --- !u!114 &8508077403588356044
 MonoBehaviour:
   m_ObjectHideFlags: 0

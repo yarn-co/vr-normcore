@@ -38,6 +38,8 @@ public class UpdateConnectionStatus : MonoBehaviour, INetworkRunnerCallbacks
 
         var connectionManager = GetComponent<ConnectionManager>();
         connectionManager.onWillConnect.AddListener(OnWillConnect);
+
+
     }
 
 

@@ -80,10 +80,13 @@ namespace Fusion.XR.Shared
         }
         #endregion
 
+        public void OnConnectedToServer(NetworkRunner runner)
+        {
+            Debug.Log("Connected to Server");
+        }
 
         #region Unused INetworkRunnerCallbacks 
         public void OnPlayerLeft(NetworkRunner runner, PlayerRef player) { }
-        public void OnConnectedToServer(NetworkRunner runner) { }
         public void OnShutdown(NetworkRunner runner, ShutdownReason shutdownReason) {}
         public void OnDisconnectedFromServer(NetworkRunner runner) { }
         public void OnConnectFailed(NetworkRunner runner, NetAddress remoteAddress, NetConnectFailedReason reason) { }

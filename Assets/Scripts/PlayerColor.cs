@@ -16,6 +16,11 @@ public class PlayerColor : NetworkBehaviour
         //}
     }
 
+    public void Start()
+    {
+        NetworkedColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
+    }
+
     public void Update()
     {
         if(HasStateAuthority == false){

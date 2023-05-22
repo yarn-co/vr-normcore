@@ -794,9 +794,10 @@ MonoBehaviour:
   dragSound: {fileID: 2178377965391740002}
   tableNockSound: {fileID: 5656920958237822889}
   _isOnTable: 0
-  _velocity: 0
-  _side: 1
+  _Velocity: 0
+  _Side: 1
   _Team: 0
+  _Collisions: 0
 --- !u!82 &5656920958237822889
 AudioSource:
   m_ObjectHideFlags: 0
