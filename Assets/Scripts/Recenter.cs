@@ -7,6 +7,7 @@ using UnityEngine.XR;
 using UnityEngine.XR.Management;
 using TMPro;
 
+[RequireComponent(typeof(XRSubSystems))]
 public class Recenter : MonoBehaviour
 {
     public GameObject Origin;
@@ -15,76 +16,128 @@ public class Recenter : MonoBehaviour
 
     private GameObject mainCamera;
 
+    private XRSubSystems xrSystems;
+
     private bool started = false;
 
-    private float height = 0f;
+    private bool switching = false;
 
-    private float offsetHeight = 0f;
+    public float height = 0f;
 
-    void Awake(){
-        //Debug.Log("Awake: " + Game.Instance.started);
-    }
+    private float cameraHeight = 0f;
+
+    public float testHeight = 0f;
+
+    private bool recentering = false;
+
+    private History<float> HeightHistory = new(20);
 
     void Start()
     {
         //Debug.Log("Start");
 
+        xrSystems = GetComponent<XRSubSystems>();
+
         originScript = Origin.GetComponent<XROrigin>();
-        
-        started = false;
-
-        height = 0;
-
-        //Debug.Log("Tracking Mode: " + originScript.CurrentTrackingOriginMode);
 
         mainCamera = GameObject.FindWithTag("MainCamera");
 
-        offsetHeight = mainCamera.transform.localPosition.y;
+        
 
-        originScript.CameraYOffset = 0;
+        Reset();
+    }
 
-        originScript.Camera.transform.position = new Vector3(0f, 0f, 0f);
+    void RecenterTest(XRInputSubsystem xrInput)
+    {
+        Debug.Log("RECENTER EVENT");
 
-        originScript.RequestedTrackingOriginMode = XROrigin.TrackingOriginMode.Floor;
+        if (!recentering)
+        {
+            Debug.Log("RESET ON RECENTER EVENT");
+
+            Reset();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!started){
+        testHeight = originScript.CameraInOriginSpaceHeight;
 
-            if(originScript.CurrentTrackingOriginMode.ToString() == "Floor"){
-                    
+        HeightHistory.AddEntry(testHeight);
+
+        if (!started)
+        {
+            if (xrSystems.xrInput != null)
+            {
+                Debug.Log("HAS XR INPUT SYSTEM");
+
+                started = true;
+
+                xrSystems.xrInput.trackingOriginUpdated += RecenterTest;
+
+                //xrSystems.xrInput.TrySetTrackingOriginMode(TrackingOriginModeFlags.Device);
+                //xrSystems.xrInput.TryRecenter();
+            }
+        }
+        
+
+        if (recentering)
+        {
+            if (originScript.CurrentTrackingOriginMode.ToString() == "Floor" && !switching){
+
+                originScript.CameraYOffset = 0;
+
                 height = originScript.CameraInOriginSpaceHeight;
 
-                //Debug.Log("Floor Mode Height: " + height);
+                Debug.Log("Floor Mode Height: " + height);
             }
 
-            if(originScript.CurrentTrackingOriginMode.ToString() == "Floor" && height > 0f){
+            if(originScript.CurrentTrackingOriginMode.ToString() == "Floor" && height > 0){
+
+                Debug.Log("Switching to Device");
+
+                switching = true;
 
                 originScript.RequestedTrackingOriginMode = XROrigin.TrackingOriginMode.Device;
             }
             
-            if(originScript.CurrentTrackingOriginMode.ToString() == "Device" && height > 0f){
-                
-                //Debug.Log("Set Height: " + height + " - " + offsetHeight);
+            if(originScript.CurrentTrackingOriginMode.ToString() == "Device" && (height > 0 || cameraHeight != 0))
+            {
+                if (cameraHeight != 0)
+                {
+                    Debug.Log("Using Stored Camera Height");
 
-                originScript.CameraYOffset = height - offsetHeight;
+                    float pastHeight = HeightHistory.Peek();
 
-                originScript.Camera.transform.position = new Vector3(0f, originScript.CameraYOffset, 0f);
+                    Debug.Log("Past Height: " + pastHeight);
 
-                //Origin.transform.position = new Vector3(0f, 0f, 0f);
+                    height = pastHeight;
 
-                Game.Instance.started = true;
+                    cameraHeight = 0;
+                }
 
-                started = true;
+                Debug.Log("End Recentering: " + height);
+
+                Debug.Log("Set Height: " + height);
+
+                originScript.CameraYOffset = height;
+
+                switching = false;
+
+                recentering = false;
             }
-
         }
     }
 
     public void Reset()
     {
-        Start();
+        recentering = true;
+
+        cameraHeight = originScript.CameraInOriginSpaceHeight;
+
+        Debug.Log("Camera Local Height at Reset: " + cameraHeight);
+
+        //originScript.RequestedTrackingOriginMode = XROrigin.TrackingOriginMode.Floor;
     }
 }

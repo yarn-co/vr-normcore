@@ -9,6 +9,8 @@ public class Game : MonoBehaviour
 
     public NetworkRunner runner;
 
+    public NetworkObject localPlayerObject;
+
     public bool started;
     
     public float height;
@@ -27,6 +29,25 @@ public class Game : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
     
+    public NetworkObject GetPlayer()
+    {
+        if(localPlayerObject != null)
+        {
+            return localPlayerObject;
+        }
+        
+        if (runner && runner.LocalPlayer.ToString() != "[Player:None]")
+        {
+            Debug.Log("Local Player Ref: " + runner.LocalPlayer);
+
+            localPlayerObject = runner.GetPlayerObject(runner.LocalPlayer);
+
+            return localPlayerObject;
+        }
+
+        return null;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

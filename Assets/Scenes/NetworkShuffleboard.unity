@@ -1430,6 +1430,7 @@ GameObject:
   - component: {fileID: 833719069}
   - component: {fileID: 833719067}
   - component: {fileID: 833719070}
+  - component: {fileID: 833719071}
   m_Layer: 0
   m_Name: ConnectionManager
   m_TagString: Untagged
@@ -1682,6 +1683,20 @@ MonoBehaviour:
   useOnAudioFilterRead: 0
   useMicrophoneTypeFallback: 1
   recordWhenJoined: 1
+--- !u!114 &833719071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833719063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 055916a6244ea9d4a969fd010cbb8fcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerPrefab: {fileID: 2549000073306557745, guid: dc120562eed5a7748a0a36f54a4ca4c9,
+    type: 3}
 --- !u!1 &958955391
 GameObject:
   m_ObjectHideFlags: 0
@@ -2366,6 +2381,7 @@ GameObject:
   - component: {fileID: 1468729774}
   - component: {fileID: 1468729775}
   - component: {fileID: 1468729776}
+  - component: {fileID: 1468729777}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -2386,6 +2402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runner: {fileID: 833719066}
+  localPlayerObject: {fileID: 0}
   started: 0
   height: 0
 --- !u!4 &1468729773
@@ -2431,6 +2448,7 @@ MonoBehaviour:
   Rig: {fileID: 0}
   smallScale: {x: 0.1, y: 0.1, z: 0.1}
   Player: {fileID: 0}
+  buttonPress: 0
 --- !u!114 &1468729775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2444,6 +2462,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Origin: {fileID: 1186867851}
+  height: 0
+  testHeight: 0
 --- !u!114 &1468729776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2465,6 +2485,21 @@ MonoBehaviour:
   onWillGrab:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1468729777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468729770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ebeab7c0d8688c47ac9c6595f8a83ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xrSettings: {fileID: 0}
+  xrManager: {fileID: 0}
+  xrLoader: {fileID: 0}
 --- !u!1001 &1477197165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3692,6 +3727,11 @@ PrefabInstance:
       propertyPath: near clip plane
       value: 0.01
       objectReference: {fileID: 0}
+    - target: {fileID: 4208948368818937483, guid: 72aacf5ad018ef84f8c2f1796da09345,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4208948368886931615, guid: 72aacf5ad018ef84f8c2f1796da09345,
         type: 3}
       propertyPath: primaryButtonAction.m_Action.m_Id
@@ -3810,12 +3850,12 @@ PrefabInstance:
     - target: {fileID: 8429155935817525401, guid: 72aacf5ad018ef84f8c2f1796da09345,
         type: 3}
       propertyPath: m_CameraYOffset
-      value: 1.131
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8429155935817525401, guid: 72aacf5ad018ef84f8c2f1796da09345,
         type: 3}
       propertyPath: m_RequestedTrackingOriginMode
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72aacf5ad018ef84f8c2f1796da09345, type: 3}

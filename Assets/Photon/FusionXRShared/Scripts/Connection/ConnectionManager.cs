@@ -71,12 +71,12 @@ namespace Fusion.XR.Shared
         #region INetworkRunnerCallbacks
         public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
         {
-            if (player == runner.LocalPlayer)
+            /*if (player == runner.LocalPlayer)
             {
                 // Spawn the user prefab for the local user
 
                 NetworkObject networkPlayerObject = runner.Spawn(userPrefab, position: transform.position, rotation: transform.rotation, player, (runner, obj) => {});
-            }
+            }*/
         }
         #endregion
 

@@ -4,8 +4,6 @@ using Unity.XR.CoreUtils;
 
 public class PlayerScale : NetworkBehaviour
 {
-    public MeshRenderer MeshRenderer;
-
     [Networked(OnChanged = nameof(ScaleChanged))]
     public float Scale { get; set; }
 
@@ -16,6 +14,8 @@ public class PlayerScale : NetworkBehaviour
     private static void ScaleChanged(Changed<PlayerScale> changed)
     {
         PlayerScale behavior = changed.Behaviour;
+
+        NetworkObject player = changed.Behaviour.Object;
 
         float newScale = behavior.Scale;
 
@@ -28,7 +28,7 @@ public class PlayerScale : NetworkBehaviour
             
         }
 
-        behavior.transform.localScale = scaleVector;
+        player.transform.localScale = scaleVector;
     }
 
     public void Start()

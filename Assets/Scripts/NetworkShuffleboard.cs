@@ -25,7 +25,7 @@ public class NetworkShuffleboard : MonoBehaviour
 
     public Vector3 smallScale = new Vector3(0.1f, 0.1f, 0.1f);
 
-    public GameObject Player;
+    public NetworkObject Player;
 
     public bool buttonPress = false;
 
@@ -45,38 +45,36 @@ public class NetworkShuffleboard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Player == null)
-        {
-            Player = GameObject.Find("NetworkHotdogRig(Clone)");
-        }
-        
-        if (secondaryButtonAction != null && secondaryButtonAction.action != null && secondaryButtonAction.action.ReadValue<float>() == 1)
+        if (secondaryButtonAction.action.ReadValue<float>() == 1)
         {
             if (!buttonPress)
             {
                 buttonPress = true;
 
-                PlayerScale playerScale = Player.GetComponent<PlayerScale>();
+                Debug.Log("secondaryButton: " + secondaryButtonAction.action.ReadValue<float>());
 
-                if (playerScale.Scale == 1)
+                Player = Game.Instance.GetPlayer();
+
+                if (Player != null)
                 {
-                    playerScale.Scale = 0.1f;
-                }
-                else
-                {
-                    playerScale.Scale = 1;
+                    PlayerScale playerScale = Player.GetComponent<PlayerScale>();
+
+                    if (playerScale.Scale == 1)
+                    {
+                        playerScale.Scale = 0.1f;
+                    }
+                    else
+                    {
+                        playerScale.Scale = 1;
+                    }
                 }
             }
-            
-
-            //OwnAllPucks();
-            //Game.Instance.GetComponent<Recenter>().Reset();
         }
         else
         {
             buttonPress = false;
         }
-    }
+}
 
     public void MakePuckForRedOne()
     {
@@ -151,6 +149,6 @@ public class NetworkShuffleboard : MonoBehaviour
     {
         ClearPucks();
 
-        Game.Instance.GetComponent<Recenter>().Reset();
+        //Game.Instance.GetComponent<Recenter>().Reset();
     }
 }
