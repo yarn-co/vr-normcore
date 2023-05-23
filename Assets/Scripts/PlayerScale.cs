@@ -21,7 +21,7 @@ public class PlayerScale : NetworkBehaviour
 
         Vector3 scaleVector = new(newScale, newScale, newScale);
 
-        if (behavior.HasStateAuthority)
+        if (player.HasStateAuthority)
         {
             behavior.Rig.transform.localScale = scaleVector;
             behavior.Origin.CameraFloorOffsetObject.transform.localPosition = new Vector3(0, behavior.Origin.CameraYOffset * newScale, 0);
