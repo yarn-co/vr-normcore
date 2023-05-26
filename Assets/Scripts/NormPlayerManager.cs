@@ -19,11 +19,15 @@ public class NormPlayerManager : MonoBehaviour
 
     private void DidConnectToRoom(Realtime realtime)
     {
+        Realtime.InstantiateOptions options = new Realtime.InstantiateOptions();
+        options.ownedByClient = true;
+        options.preventOwnershipTakeover = true;
+        options.destroyWhenOwnerLeaves = true;
+        options.destroyWhenLastClientLeaves = true;
+        options.useInstance = _realtime;
+
         // Instantiate the Player for this client once we've successfully connected to the room
-        GameObject playerGameObject = Realtime.Instantiate(prefabName: "NormPlayer",  // Prefab name
-                                                                      ownedByClient: true,      // Make sure the RealtimeView on this prefab is owned by this client
-                                                           preventOwnershipTakeover: true,      // Prevent other clients from calling RequestOwnership() on the root RealtimeView.
-                                                                        useInstance: realtime); // Use the instance of Realtime that fired the didConnectToRoom event.
+        GameObject playerGameObject = Realtime.Instantiate("NormPlayer", options);
 
         // Get a reference to the player
         NormPlayer player = playerGameObject.GetComponent<NormPlayer>();
