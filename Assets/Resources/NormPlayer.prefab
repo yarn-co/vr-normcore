@@ -46,7 +46,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5915987585668979384}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 2
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -236,11 +236,52 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shroom
       objectReference: {fileID: 0}
+    - target: {fileID: 4599315512614908162, guid: ff8aec0d00ea7774bb4ee3cfc5de5b6c,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -5716582365342782929, guid: 2973e9850c971a846bc678d8c436bc37,
+        type: 3}
     - target: {fileID: 4670075259233956625, guid: ff8aec0d00ea7774bb4ee3cfc5de5b6c,
         type: 3}
       propertyPath: m_Name
       value: Hat
       objectReference: {fileID: 0}
+    - target: {fileID: 5308153112159401891, guid: ff8aec0d00ea7774bb4ee3cfc5de5b6c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9914449
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308153112159401891, guid: ff8aec0d00ea7774bb4ee3cfc5de5b6c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.13052624
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308153112159401891, guid: ff8aec0d00ea7774bb4ee3cfc5de5b6c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452719888854299683, guid: ff8aec0d00ea7774bb4ee3cfc5de5b6c,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452719888854299683, guid: ff8aec0d00ea7774bb4ee3cfc5de5b6c,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452719888854299683, guid: ff8aec0d00ea7774bb4ee3cfc5de5b6c,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6675889171570970959, guid: ff8aec0d00ea7774bb4ee3cfc5de5b6c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9d26468f4627d4d5fb08891b5958f780, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

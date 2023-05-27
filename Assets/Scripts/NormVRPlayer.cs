@@ -1,13 +1,8 @@
 using UnityEngine;
 using Normal.Realtime;
 
-public class NormPlayer : MonoBehaviour
+public class NormVRPlayer : MonoBehaviour
 {
-    // Camera
-    public Transform cameraTarget;
-    private float _mouseLookX;
-    private float _mouseLookY;
-
     // Physics
     private Vector3 _targetMovement;
     private Vector3 _movement;
@@ -17,12 +12,10 @@ public class NormPlayer : MonoBehaviour
 
     private Rigidbody _rigidbody;
 
-    // Multiplayer
     private RealtimeView _realtimeView;
 
     private ColorSync _colorSync;
 
-    // Hoverbird
     [SerializeField] private Transform _character = default;
 
     private void Awake()
@@ -50,6 +43,7 @@ public class NormPlayer : MonoBehaviour
     {
         // Request ownership of the Player and the character RealtimeTransforms
         GetComponent<RealtimeTransform>().RequestOwnership();
+
         _character.GetComponent<RealtimeTransform>().RequestOwnership();
 
         _colorSync.SetColor(new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1f));
@@ -64,9 +58,6 @@ public class NormPlayer : MonoBehaviour
 
     private void LocalUpdate()
     {
-        // Move the camera using the mouse
-        RotateCamera();
-
         // Use WASD input and the camera look direction to calculate the movement target
         CalculateTargetMovement();
 
@@ -87,22 +78,7 @@ public class NormPlayer : MonoBehaviour
         MovePlayer();
 
         // Animate the character to match the player movement
-        AnimateCharacter();
-    }
-
-    private void RotateCamera()
-    {
-        // Get the latest mouse movement. Multiple by 4.0 to increase sensitivity.
-        _mouseLookX += Input.GetAxis("Mouse X") * 4.0f;
-        _mouseLookY += Input.GetAxis("Mouse Y") * 4.0f;
-
-        // Clamp how far you can look up + down
-        while (_mouseLookY < -180.0f) _mouseLookY += 360.0f;
-        while (_mouseLookY > 180.0f) _mouseLookY -= 360.0f;
-        _mouseLookY = Mathf.Clamp(_mouseLookY, -15.0f, 15.0f);
-
-        // Rotate camera
-        cameraTarget.localRotation = Quaternion.Euler(-_mouseLookY, _mouseLookX, 0.0f);
+        //AnimateCharacter();
     }
 
     private void CalculateTargetMovement()
@@ -112,12 +88,8 @@ public class NormPlayer : MonoBehaviour
         inputMovement.x = Input.GetAxisRaw("Horizontal") * 6.0f;
         inputMovement.z = Input.GetAxisRaw("Vertical") * 6.0f;
 
-        // Get the direction the camera is looking parallel to the ground plane.
-        Vector3 cameraLookForwardVector = ProjectVectorOntoGroundPlane(cameraTarget.forward);
-        Quaternion cameraLookForward = Quaternion.LookRotation(cameraLookForwardVector);
-
         // Use the camera look direction to convert the input movement from camera space to world space
-        _targetMovement = cameraLookForward * inputMovement;
+        _targetMovement = inputMovement;
     }
 
     private void CheckForJump()
@@ -141,7 +113,7 @@ public class NormPlayer : MonoBehaviour
         if (_jumpThisFrame)
         {
             // Instantaneously set the vertical velocity to 6.0 m/s
-            velocity.y = 3.0f;
+            velocity.y = 6.0f;
 
             // Mark the player as currently jumping and clear the jump input
             _jumping = true;
@@ -159,33 +131,7 @@ public class NormPlayer : MonoBehaviour
     // Rotate the character to face the direction we're moving. Lean towards the target movement direction.
     private void AnimateCharacter()
     {
-        // Calculate the direction that the character is facing parallel to the ground plane
-        Vector3 characterLocalForwardVector = _character.localRotation * Vector3.forward;
-        Vector3 characterLookForwardVector = ProjectVectorOntoGroundPlane(characterLocalForwardVector);
-        Quaternion characterLookForward = Quaternion.LookRotation(characterLookForwardVector);
-
-        // Calculate the angle between the current movement direction and the target movement direction
-        Vector3 targetMovementNormalized = _targetMovement.normalized;
-        Vector3 movementNormalized = _movement.normalized;
-        float angle = targetMovementNormalized.sqrMagnitude > 0.0f ? SignedAngle2D(targetMovementNormalized, movementNormalized) : 0.0f;
-
-        // Convert the delta between movement direction and the target movement direction to a lean amount. Clamp to +/- 45 degrees so the player doesn't lean too far.
-        angle = angle * Mathf.Rad2Deg;
-        angle = Mathf.Clamp(angle, -45.0f, 45.0f);
-
-        // Convert the lean angle to a Quaternion that's oriented in the direction the character is facing
-        Quaternion leanRotation = characterLookForward * Quaternion.Euler(0.0f, 0.0f, angle);
-
-        // Rotate to face the direction of travel if we're moving forward
-        Vector3 targetCharacterLookForwardVector = characterLookForwardVector;
-        if (GetRigidbodyForwardVelocity(_rigidbody) >= 2.0f)
-            targetCharacterLookForwardVector = _rigidbody.velocity.normalized;
-
-        // Compose the target character rotation from the target look direction + target lean direction
-        Quaternion targetRotation = Quaternion.LookRotation(targetCharacterLookForwardVector, leanRotation * Vector3.up);
-
-        // Animate the character towards the target rotation
-        _character.localRotation = Quaternion.Slerp(_character.localRotation, targetRotation, 5.0f * Time.fixedDeltaTime);
+        
     }
 
     // Given a forward vector, get a y-axis rotation that points in the same direction that's parallel to the ground plane
