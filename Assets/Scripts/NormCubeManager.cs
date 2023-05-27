@@ -31,6 +31,7 @@ public class NormCubeManager : MonoBehaviour
             _avatar = _avatarManager.localAvatar;
 
             Debug.Log("Got local avatar");
+
         }
 
         if (_avatar && _avatar.rightHand && rightFollower && !rightFollower.target)

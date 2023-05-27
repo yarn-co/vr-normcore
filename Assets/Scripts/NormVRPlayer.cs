@@ -125,7 +125,7 @@ public class NormVRPlayer : MonoBehaviour
             _jumping = false;
 
         // Set the velocity on the rigidbody
-        _rigidbody.velocity = velocity;
+        //_rigidbody.velocity = velocity;
     }
 
     // Rotate the character to face the direction we're moving. Lean towards the target movement direction.

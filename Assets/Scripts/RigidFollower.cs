@@ -8,7 +8,7 @@ public class RigidFollower : MonoBehaviour
     public Transform target;
     private Rigidbody _rigidbody;
 
-    float amp = 50f;
+    float amp = 20f;
     float speed = 10.0f;
     private Vector3 desiredVelocity = Vector3.zero;
     private Vector3 distance;
