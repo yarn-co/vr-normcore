@@ -29,9 +29,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/NormcoreVRTest.unity
     guid: 323a010c480c9f147b48101cc4b0d401
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NormcoreTest.unity
     guid: 070779ca750712b45958633d4c2d54fb
+  - enabled: 1
+    path: Assets/Scenes/NormcoreCrossplay.unity
+    guid: 202e0c2db8495724fb127fa2efdb6b1d
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260,
       type: 2}

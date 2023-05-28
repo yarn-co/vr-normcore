@@ -10,21 +10,37 @@ using UnityEngine.XR.Management;
 
 public class ControllerSwitcher : MonoBehaviour
 {
+    public bool forceDesktop = false;
     public GameObject keyboardController;
     public Transform keyboardHead;
+    public GameObject keyboardAvatarPrefab;
+
     public GameObject XRRig;
+    public GameObject XRAvatarPrefab;
     public Transform XRHead;
     public Transform XRLeftHand;
     public Transform XRRightHand;
-    public Transform realtime;
+    
+    public RealtimeAvatarManager avatarManager;
 
     private void Awake()
     {
         StartCoroutine(StartXR());
     }
 
+    private void OnDestroy()
+    {
+        StopXR();
+    }
+
     public IEnumerator StartXR()
     {
+        if (forceDesktop)
+        {
+            NotXRMode();
+            yield break;
+        }
+        
         Debug.Log("HERE Initializing XR...");
         yield return XRGeneralSettings.Instance.Manager.InitializeLoader();
 
@@ -32,7 +48,7 @@ public class ControllerSwitcher : MonoBehaviour
         {
             Debug.LogError("Initializing XR Failed. Directing to Normal Interaciton Mode...!.");
             StopXR();
-            DirectToNormal();
+            NotXRMode();
         }
         else
         {
@@ -43,23 +59,44 @@ public class ControllerSwitcher : MonoBehaviour
             if (loaderSuccess)
             {
                 Debug.Log("All Subsystems Started!");
+                XRMode();
             }
             else
             {
                 Debug.LogError("Starting Subsystems Failed. Directing to Normal Interaciton Mode...!");
                 StopXR();
-                DirectToNormal();
+                NotXRMode();
             }
         }
     }
 
     void StopXR()
     {
-         Debug.Log("XR stopped completely.");
+        XRGeneralSettings.Instance.Manager.DeinitializeLoader();
+
+        if (XRGeneralSettings.Instance.Manager.activeLoader)
+        {
+            XRGeneralSettings.Instance.Manager.activeLoader.Stop();
+        }
+        Debug.Log("XR stopped completely.");
     }
-    void DirectToNormal()
+
+    void NotXRMode()
     {
-        Debug.Log("Fell back to Mouse & Keyboard Interaciton!");
+        Debug.Log("NOT XR MODE!");
+        XRRig.SetActive(false);
+        keyboardController.SetActive(true);
+
+        avatarManager.localAvatarPrefab = keyboardAvatarPrefab;
+    }
+
+    void XRMode()
+    {
+        Debug.Log("YAAAAY XR MODE!");
+        XRRig.SetActive(true);
+        keyboardController.SetActive(false);
+
+        avatarManager.localAvatarPrefab = XRAvatarPrefab;
     }
 
     /*
