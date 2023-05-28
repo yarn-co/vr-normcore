@@ -8,7 +8,7 @@ using UnityEngine;
 using Normal.Realtime;
 using UnityEngine.XR.Management;
 
-public class ControllerSwitcher : MonoBehaviour
+public class PlayerModeSwitcher : MonoBehaviour
 {
     public bool forceDesktop = false;
     public GameObject keyboardController;
@@ -22,6 +22,7 @@ public class ControllerSwitcher : MonoBehaviour
     public Transform XRRightHand;
     
     public RealtimeAvatarManager avatarManager;
+    public bool isXRMode = false;
 
     private void Awake()
     {
@@ -84,6 +85,8 @@ public class ControllerSwitcher : MonoBehaviour
     void NotXRMode()
     {
         Debug.Log("NOT XR MODE!");
+
+        isXRMode = false;
         XRRig.SetActive(false);
         keyboardController.SetActive(true);
 
@@ -93,6 +96,8 @@ public class ControllerSwitcher : MonoBehaviour
     void XRMode()
     {
         Debug.Log("YAAAAY XR MODE!");
+
+        isXRMode = true;
         XRRig.SetActive(true);
         keyboardController.SetActive(false);
 
