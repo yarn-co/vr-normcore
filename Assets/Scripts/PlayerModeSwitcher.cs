@@ -27,11 +27,29 @@ public class PlayerModeSwitcher : MonoBehaviour
     private void Awake()
     {
         StartCoroutine(StartXR());
+        StartCoroutine(RequestMicrophone());
     }
 
     private void OnDestroy()
     {
         StopXR();
+    }
+
+    public IEnumerator RequestMicrophone()
+    {
+        // Request microphone permission
+        yield return Application.RequestUserAuthorization(UserAuthorization.Microphone);
+
+        // Check microphone permission
+        if (Application.HasUserAuthorization(UserAuthorization.Microphone))
+        {
+            Debug.Log("Microphone found");
+        }
+        else
+        {
+            Debug.Log("Microphone not found");
+        }
+
     }
 
     public IEnumerator StartXR()
