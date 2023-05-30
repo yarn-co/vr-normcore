@@ -949,10 +949,10 @@ MonoBehaviour:
   forceDesktop: 0
   keyboardController: {fileID: 572254551}
   keyboardHead: {fileID: 0}
-  keyboardAvatarPrefab: {fileID: 5500087384471463014, guid: 7c0f52c317601134ca23db2321281b74,
+  keyboardAvatarPrefab: {fileID: 5270862196115881026, guid: 7c0f52c317601134ca23db2321281b74,
     type: 3}
   XRRig: {fileID: 1319369402}
-  XRAvatarPrefab: {fileID: 1435502846325602, guid: e169c2e74aa3f2340992fef8c1ead36d,
+  XRAvatarPrefab: {fileID: 7056650111491494170, guid: e169c2e74aa3f2340992fef8c1ead36d,
     type: 3}
   XRHead: {fileID: 0}
   XRLeftHand: {fileID: 0}
