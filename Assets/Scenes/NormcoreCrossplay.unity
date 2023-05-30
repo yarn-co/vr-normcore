@@ -925,7 +925,7 @@ GameObject:
   - component: {fileID: 1994765821}
   - component: {fileID: 1994765824}
   - component: {fileID: 1994765820}
-  - component: {fileID: 1994765823}
+  - component: {fileID: 1994765826}
   - component: {fileID: 1994765825}
   m_Layer: 0
   m_Name: Controller
@@ -946,18 +946,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4cbd90a65e7b754c81cf026a6ae2974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceDesktop: 1
+  forceDesktop: 0
   keyboardController: {fileID: 572254551}
   keyboardHead: {fileID: 0}
   keyboardAvatarPrefab: {fileID: 5270862196115881026, guid: 7c0f52c317601134ca23db2321281b74,
     type: 3}
   XRRig: {fileID: 1319369402}
-  XRAvatarPrefab: {fileID: 7056650111491494170, guid: e169c2e74aa3f2340992fef8c1ead36d,
+  XRAvatarPrefab: {fileID: 6901311888271401986, guid: e169c2e74aa3f2340992fef8c1ead36d,
     type: 3}
   XRHead: {fileID: 0}
   XRLeftHand: {fileID: 0}
   XRRightHand: {fileID: 0}
-  avatarManager: {fileID: 1994765823}
+  avatarManager: {fileID: 1994765826}
   isXRMode: 0
 --- !u!4 &1994765821
 Transform:
@@ -976,24 +976,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1994765823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1994765819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5b6ae53fe1e66d429cc41bbf5b29cb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _localAvatarPrefab: {fileID: 0}
-  _localPlayer:
-    root: {fileID: 0}
-    head: {fileID: 0}
-    leftHand: {fileID: 0}
-    rightHand: {fileID: 0}
 --- !u!114 &1994765824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1023,6 +1005,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a508b8d4dab14643ad251abaa5c0f3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1994765826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994765819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2152345c19aec8b42a73aee89bdc0521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _localAvatarPrefab: {fileID: 5270862196115881026, guid: 7c0f52c317601134ca23db2321281b74,
+    type: 3}
+  _localPlayer:
+    root: {fileID: 0}
+    head: {fileID: 0}
+    leftHand: {fileID: 0}
+    rightHand: {fileID: 0}
 --- !u!850595691 &2041286259
 LightingSettings:
   m_ObjectHideFlags: 0

@@ -1,12 +1,11 @@
 #if !(UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN || (UNITY_ANDROID && !UNITY_EDITOR))
-#define OVRPLUGIN_UNSUPPORTED_PLATFORM
+#define XR_UNSUPPORTED_PLATFORM
 #endif
 
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Normal.Realtime;
 using UnityEngine.XR.Management;
+using Spacebar;
 
 public class PlayerModeSwitcher : MonoBehaviour
 {
@@ -21,7 +20,7 @@ public class PlayerModeSwitcher : MonoBehaviour
     public Transform XRLeftHand;
     public Transform XRRightHand;
     
-    public RealtimeAvatarManager avatarManager;
+    public Spacebar.Realtime.RealtimeAvatarManager avatarManager;
     public bool isXRMode = false;
 
     private void Awake()

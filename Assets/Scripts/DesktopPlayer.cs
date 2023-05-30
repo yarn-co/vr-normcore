@@ -105,14 +105,11 @@ public class DesktopPlayer : MonoBehaviour
 
         _mouseLookX += vector.x * lookSensitivity;
         _mouseLookY += vector.y * lookSensitivity;
-
-        
-
         
         //while (_mouseLookX < -180.0f) _mouseLookX += 180.0f;
         //while (_mouseLookX > 180.0f) _mouseLookX -= 180.0f;
 
-        Debug.Log(_mouseLookX + " | " + _mouseLookY);
+        //Debug.Log(_mouseLookX + " | " + _mouseLookY);
 
         _mouseLookX = Mathf.Clamp(_mouseLookX, -179.0f, 179.0f);
 
