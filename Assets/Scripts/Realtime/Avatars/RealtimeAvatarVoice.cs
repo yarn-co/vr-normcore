@@ -16,7 +16,9 @@ namespace Spacebar.Realtime {
 
         private bool _mute = false;
         public  bool  mute { get { return _mute; } set { SetMute(value); } }
-        
+
+        public bool echoCancellation = true;
+
         private bool                   _hasMicrophone { get { return (_oculusMicrophoneDevice != null || _nativeMicrophoneDevice != null || _unityMicrophoneDevice != null); } }
         private OculusMicrophoneDevice _oculusMicrophoneDevice;
         private Normal.Realtime.Native.Microphone      _nativeMicrophoneDevice;
@@ -182,6 +184,8 @@ namespace Spacebar.Realtime {
 #endif
 
         private void ConnectLocalAudioStream() {
+
+            Debug.Log("ConnectLocalAudioStream");
             // Local player, create microphone stream
 
             // First check if this platform supports our native microphone wrapper (lower latency + native echo cancellation if available)
@@ -248,7 +252,7 @@ namespace Spacebar.Realtime {
                 bool   isXRPlatform                 = loadedDeviceName.Contains("oculus") || loadedDeviceName.Contains("pico") || loadedDeviceName.Contains("xr"); // Typically "Oculus", "oculus display", "OpenXR Display", depending on Unity / platform SDK version.
 
                 // Turn on software echo cancellation for mobile platforms without native echo cancellation (aka non-iOS with the exception of Oculus/XR Android platforms)
-                bool echoCancellation = isMobilePlatformThatIsNotiOS && !isXRPlatform;
+                //bool echoCancellation = isMobilePlatformThatIsNotiOS && !isXRPlatform;
                 _audioPreprocessor = new AudioPreprocessor(_microphoneSampleRate,_microphoneFrameSize,                  // Input stream
                                                            true,                                                        // Automatic gain control
                                                            true,                                                        // Noise suppression
