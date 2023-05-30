@@ -991,7 +991,7 @@ MonoBehaviour:
   _obsoleteAppKey: 
   _normcoreAppSettings: {fileID: 11400000, guid: 7c911eaad49aa424d8e3a4e3cd14a1e0,
     type: 2}
-  _roomToJoinOnStart: Test Room 2
+  _roomToJoinOnStart: Test Room 3
   _joinRoomOnStart: 1
 --- !u!114 &1994765825
 MonoBehaviour:
