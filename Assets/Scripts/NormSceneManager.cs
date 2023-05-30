@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.Animations;
 using Normal.Realtime;
-using Photon.Realtime;
 
 public class NormSceneManager : MonoBehaviour
 {
@@ -93,7 +92,7 @@ public class NormSceneManager : MonoBehaviour
             //set up non-XR player
 
             // Get a reference to the player
-            NormPlayer player = _avatar.GetComponent<NormPlayer>();
+            DesktopPlayer player = _avatar.GetComponent<DesktopPlayer>();
 
             // Get the constraint used to position the camera behind the player
             ParentConstraint cameraConstraint = _camera.GetComponent<ParentConstraint>();
