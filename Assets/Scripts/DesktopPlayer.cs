@@ -7,7 +7,7 @@ using static UnityEngine.Rendering.DebugUI;
 public class DesktopPlayer : MonoBehaviour
 {
     // Camera
-    public Transform cameraTarget;
+    private Transform cameraTarget;
     private float _mouseLookX;
     private float _mouseLookY;
 
@@ -26,7 +26,10 @@ public class DesktopPlayer : MonoBehaviour
     private ColorSync _colorSync;
 
     public float speed = 6f;
-    public float lookSensitivity = 0.05f;
+    //public float lookSensitivity = 0.05f;
+
+    private Vector3 inputMovement = new();
+    private Vector2 moveVector = new();
 
     // Hoverbird
     [SerializeField] private Transform _character = default;
@@ -43,6 +46,8 @@ public class DesktopPlayer : MonoBehaviour
         _realtimeView = GetComponent<RealtimeView>();
 
         _colorSync = GetComponent<ColorSync>();
+
+        cameraTarget = Camera.main.transform;
     }
 
     private void Start()
@@ -92,45 +97,24 @@ public class DesktopPlayer : MonoBehaviour
 
     public void OnLook(InputValue value)
     {
-        RotateCamera(value);
-    }
-
-    private void RotateCamera(InputValue value)
-    {
-        // Get the latest mouse movement. Multiple by 4.0 to increase sensitivity.
-        //_mouseLookX += Input.GetAxis("Mouse X") * 4.0f;
-        //_mouseLookY += Input.GetAxis("Mouse Y") * 4.0f;
-
-        Vector2 vector = value.Get<Vector2>();
-
-        _mouseLookX += vector.x * lookSensitivity;
-        _mouseLookY += vector.y * lookSensitivity;
-        
-        //while (_mouseLookX < -180.0f) _mouseLookX += 180.0f;
-        //while (_mouseLookX > 180.0f) _mouseLookX -= 180.0f;
-
-        //Debug.Log(_mouseLookX + " | " + _mouseLookY);
-
-        _mouseLookX = Mathf.Clamp(_mouseLookX, -179.0f, 179.0f);
-
-        // Clamp how far you can look up + down
-        _mouseLookY = Mathf.Clamp(_mouseLookY, -45.0f, 50.0f);
-
-        // Rotate camera
-        cameraTarget.localRotation = Quaternion.Euler(-_mouseLookY, _mouseLookX, 0.0f);
+        CalculateTargetMovement(null);
     }
 
     private void CalculateTargetMovement(InputValue value)
-    {
-        Vector2 vector = value.Get<Vector2>();
-
-        Vector3 inputMovement = new Vector3();
-        inputMovement.x = vector.x * speed;
-        inputMovement.z = vector.y * speed;
-
+    { 
+        if(value != null)
+        {
+            moveVector = value.Get<Vector2>();
+            inputMovement.x = moveVector.x * speed;
+            inputMovement.z = moveVector.y * speed;
+        }
+       
         // Get the direction the camera is looking parallel to the ground plane.
         Vector3 cameraLookForwardVector = ProjectVectorOntoGroundPlane(cameraTarget.forward);
         Quaternion cameraLookForward = Quaternion.LookRotation(cameraLookForwardVector);
+
+        //Debug.Log("cameraLookForwardVector: " + cameraLookForwardVector);
+        Debug.DrawRay(Vector3.zero, cameraTarget.forward, Color.red, 1f);
 
         // Use the camera look direction to convert the input movement from camera space to world space
         _targetMovement = cameraLookForward * inputMovement;

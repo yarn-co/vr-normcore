@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.Animations;
 using Normal.Realtime;
+using Unity.XR.CoreUtils;
+using UnityEngine.XR;
+using Cinemachine;
 
 namespace Spacebar.Realtime
 {
@@ -15,9 +18,13 @@ namespace Spacebar.Realtime
         private PlayerModeSwitcher _modeSwitcher;
 
         private Camera _camera;
-
+        
         private RigidFollower rightFollower;
         private RigidFollower leftFollower;
+
+        public CinemachineFreeLook CMFreeLook;
+
+        public bool userPresent = false;
 
         private void Awake()
         {
@@ -30,12 +37,32 @@ namespace Spacebar.Realtime
 
             _camera = Camera.main;
 
-            // Notify us when Realtime successfully connects to the room
-            //_realtime.didConnectToRoom += DidConnectToRoom;
+            bool present = isVRUserPresent();
+        }
+
+        public bool isVRUserPresent()
+        {
+            //Debug.Log("Detecting VR User Presence..");
+
+            InputDevice headDevice = InputDevices.GetDeviceAtXRNode(XRNode.Head);
+
+            if (headDevice.isValid == false)
+            {
+                userPresent = false;
+                return false;
+            }
+
+            bool presenceFeatureSupported = headDevice.TryGetFeatureValue(CommonUsages.userPresence, out userPresent);
+
+            //Debug.Log(headDevice.isValid + " ** " + presenceFeatureSupported + " ** " + userPresent);
+
+            return userPresent;
         }
 
         private void Update()
         {
+            bool present = isVRUserPresent();
+
             if (_avatar == null && _avatarManager.localAvatar != null)
             {
                 _avatar = _avatarManager.localAvatar;
@@ -96,16 +123,19 @@ namespace Spacebar.Realtime
                 // Get a reference to the player
                 DesktopPlayer player = _avatar.GetComponent<DesktopPlayer>();
 
+                CMFreeLook.LookAt = _avatar.gameObject.transform;
+                CMFreeLook.Follow = _avatar.gameObject.transform;
+
                 // Get the constraint used to position the camera behind the player
-                ParentConstraint cameraConstraint = _camera.GetComponent<ParentConstraint>();
+                //ParentConstraint cameraConstraint = _camera.GetComponent<ParentConstraint>();
 
                 // Add the camera target so the camera follows it
-                ConstraintSource constraintSource = new ConstraintSource { sourceTransform = player.cameraTarget, weight = 1.0f };
-                int constraintIndex = cameraConstraint.AddSource(constraintSource);
+                //ConstraintSource constraintSource = new ConstraintSource { sourceTransform = player.cameraTarget, weight = 1.0f };
+                //int constraintIndex = cameraConstraint.AddSource(constraintSource);
 
                 // Set the camera offset so it acts like a third-person camera.
-                cameraConstraint.SetTranslationOffset(constraintIndex, new Vector3(0.0f, 1.0f, -4.0f));
-                cameraConstraint.SetRotationOffset(constraintIndex, new Vector3(15.0f, 0.0f, 0.0f));
+                //cameraConstraint.SetTranslationOffset(constraintIndex, new Vector3(0.0f, 1.0f, -4.0f));
+                //cameraConstraint.SetRotationOffset(constraintIndex, new Vector3(15.0f, 0.0f, 0.0f));
             }
 
 
