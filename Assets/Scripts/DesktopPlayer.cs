@@ -1,11 +1,13 @@
 using UnityEngine;
 using Normal.Realtime;
-using UnityEngine.InputSystem;
 using System;
-using static UnityEngine.Rendering.DebugUI;
+using Rewired;
 
 public class DesktopPlayer : MonoBehaviour
 {
+    public int playerId = 0;
+    private Player player; //Rewired player
+
     // Camera
     private Transform cameraTarget;
     private float _mouseLookX;
@@ -48,6 +50,8 @@ public class DesktopPlayer : MonoBehaviour
         _colorSync = GetComponent<ColorSync>();
 
         cameraTarget = Camera.main.transform;
+
+        player = ReInput.players.GetPlayer(playerId);
     }
 
     private void Start()
@@ -73,6 +77,13 @@ public class DesktopPlayer : MonoBehaviour
             LocalFixedUpdate();
     }
 
+    private void Update()
+    {
+        // Call LocalUpdate() only if this instance is owned by the local client
+        if (_realtimeView.isOwnedLocallyInHierarchy)
+            GetInput();
+    }
+
     private void LocalFixedUpdate()
     {
         // Move the player based on the input
@@ -82,7 +93,24 @@ public class DesktopPlayer : MonoBehaviour
         AnimateCharacter();
     }
 
-    public void OnJump()
+    private void GetInput()
+    {
+        // Get the input from the Rewired Player. All controllers that the Player owns will contribute, so it doesn't matter
+        // whether the input is coming from a joystick, the keyboard, mouse, or a custom controller.
+
+        moveVector.x = player.GetAxis("Move Horizontal"); // get input by name or action id
+        moveVector.y = player.GetAxis("Move Vertical");
+
+        if (player.GetButtonDown("Jump"))
+        {
+            Jump();
+        }
+
+       
+        CalculateTargetMovement();
+    }
+
+    public void Jump()
     {
         if (!_jumping)
         {
@@ -90,25 +118,11 @@ public class DesktopPlayer : MonoBehaviour
         }
     }
 
-    public void OnMove(InputValue value)
-    {
-        CalculateTargetMovement(value);
-    }
-
-    public void OnLook(InputValue value)
-    {
-        CalculateTargetMovement(null);
-    }
-
-    private void CalculateTargetMovement(InputValue value)
+    private void CalculateTargetMovement()
     { 
-        if(value != null)
-        {
-            moveVector = value.Get<Vector2>();
-            inputMovement.x = moveVector.x * speed;
-            inputMovement.z = moveVector.y * speed;
-        }
-       
+        inputMovement.x = moveVector.x * speed;
+        inputMovement.z = moveVector.y * speed;
+
         // Get the direction the camera is looking parallel to the ground plane.
         Vector3 cameraLookForwardVector = ProjectVectorOntoGroundPlane(cameraTarget.forward);
         Quaternion cameraLookForward = Quaternion.LookRotation(cameraLookForwardVector);
