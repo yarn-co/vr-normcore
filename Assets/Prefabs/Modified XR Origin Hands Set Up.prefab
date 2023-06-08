@@ -226,6 +226,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5773256366622995465}
     m_Modifications:
     - target: {fileID: 2031214078725698633, guid: b4486c31b5d7801478a67bcbdd28262c,
@@ -303,7 +304,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: Modified XR Origin Hands
       objectReference: {fileID: 0}
+    - target: {fileID: 8438646577071122916, guid: b4486c31b5d7801478a67bcbdd28262c,
+        type: 3}
+      propertyPath: m_TrackingStateInput.m_Action.m_Id
+      value: 277d0610-d949-4615-a68d-f5571252d8d5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438646577071122916, guid: b4486c31b5d7801478a67bcbdd28262c,
+        type: 3}
+      propertyPath: m_TrackingStateInput.m_Action.m_Name
+      value: Tracking State Input
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5354633217624420267, guid: b4486c31b5d7801478a67bcbdd28262c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6724905888463384483}
   m_SourcePrefab: {fileID: 100100000, guid: b4486c31b5d7801478a67bcbdd28262c, type: 3}
 --- !u!4 &2561667169669071729 stripped
 Transform:
@@ -347,6 +365,17 @@ MonoBehaviour:
   m_Dithering: 0
   m_ClearDepth: 1
   m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
