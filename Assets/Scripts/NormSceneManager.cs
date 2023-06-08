@@ -102,12 +102,12 @@ namespace Spacebar.Realtime
                 options.destroyWhenLastClientLeaves = true;
                 options.useInstance = _realtime;
 
-                _avatar.rightHand.gameObject.SetActive(false);
-                _avatar.leftHand.gameObject.SetActive(false);
+                //_avatar.rightHand.gameObject.SetActive(false);
+                //_avatar.leftHand.gameObject.SetActive(false);
 
                 /*
                  * Block Hands!
-                 * 
+                 */
                 if (_avatar.rightHand != null)
                 {
                     GameObject rightFollowerObject = Normal.Realtime.Realtime.Instantiate("FollowCube", _avatar.rightHand.transform.position, Quaternion.identity, options);
@@ -121,7 +121,7 @@ namespace Spacebar.Realtime
                     leftFollower = leftFollowerObject.GetComponent<RigidFollower>();
                     leftFollowerObject.GetComponent<RealtimeTransform>().RequestOwnership();
                 }
-                */
+                
             }
             else
             {
