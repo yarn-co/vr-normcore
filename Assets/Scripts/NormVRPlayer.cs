@@ -1,8 +1,12 @@
 using UnityEngine;
 using Normal.Realtime;
+using Rewired;
 
 public class NormVRPlayer : MonoBehaviour
 {
+    public int playerId = 0;
+    private Player player; //Rewired player
+
     // Physics
     private Vector3 _targetMovement;
     private Vector3 _movement;
@@ -18,6 +22,11 @@ public class NormVRPlayer : MonoBehaviour
 
     [SerializeField] private Transform _character = default;
 
+    public float speed = 6f;
+
+    private Vector3 inputMovement = new();
+    private Vector2 moveVector = new();
+
     private void Awake()
     {
         // Set physics timestep to 60hz
@@ -30,6 +39,8 @@ public class NormVRPlayer : MonoBehaviour
         _realtimeView = GetComponent<RealtimeView>();
 
         _colorSync = GetComponent<ColorSync>();
+
+        player = ReInput.players.GetPlayer(playerId);
     }
 
     private void Start()
@@ -58,11 +69,31 @@ public class NormVRPlayer : MonoBehaviour
 
     private void LocalUpdate()
     {
+        GetInput();
+
         // Use WASD input and the camera look direction to calculate the movement target
         CalculateTargetMovement();
 
         // Check if we should jump this frame
         CheckForJump();
+    }
+
+    private void GetInput()
+    {
+        // Get the input from the Rewired Player. All controllers that the Player owns will contribute, so it doesn't matter
+        // whether the input is coming from a joystick, the keyboard, mouse, or a custom controller.
+
+        moveVector.x = player.GetAxis("Move Horizontal"); // get input by name or action id
+        moveVector.y = player.GetAxis("Move Vertical");
+
+        //Debug.Log("Move: " + moveVector);
+
+        if (player.GetButtonDown("Jump"))
+        {
+            //Jump();
+        }
+
+        CalculateTargetMovement();
     }
 
     private void FixedUpdate()
@@ -85,8 +116,8 @@ public class NormVRPlayer : MonoBehaviour
     {
         // Get input movement. Multiple by 6.0 to increase speed.
         Vector3 inputMovement = new Vector3();
-        inputMovement.x = Input.GetAxisRaw("Horizontal") * 6.0f;
-        inputMovement.z = Input.GetAxisRaw("Vertical") * 6.0f;
+        inputMovement.x = moveVector.x * 6.0f;
+        inputMovement.z = moveVector.y * 6.0f;
 
         // Use the camera look direction to convert the input movement from camera space to world space
         _targetMovement = inputMovement;
