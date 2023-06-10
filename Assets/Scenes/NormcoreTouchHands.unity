@@ -1803,7 +1803,7 @@ MonoBehaviour:
       ps4_assignJoysticksByPS4JoyId: 1
       useSteamControllerSupport: 1
       logToScreen: 0
-      runInEditMode: 0
+      runInEditMode: 1
       allowInputInEditorSceneView: 0
       platformVars_windowsStandalone:
         disableKeyboard: 0
@@ -2276,10 +2276,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da862f6a3ad61334aae68294036536aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rewiredInputManager: {fileID: 0}
+  _rewiredInputManager: {fileID: 1523198875}
   _absoluteAxisSensitivity: 300
   _scaleAbsoluteAxesToScreen: 0
-  _runInEditMode: 0
+  _runInEditMode: 1
   _playerMappings:
   - _playerId: 0
     _actionMappings:
@@ -2401,7 +2401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4cbd90a65e7b754c81cf026a6ae2974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceDesktop: 0
+  forceDesktop: 1
   keyboardController: {fileID: 572254551}
   keyboardHead: {fileID: 0}
   keyboardAvatarPrefab: {fileID: 5270862196115881026, guid: 7c0f52c317601134ca23db2321281b74,
