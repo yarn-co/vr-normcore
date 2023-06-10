@@ -464,6 +464,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 572254552}
+  - component: {fileID: 572254553}
   m_Layer: 0
   m_Name: Keyboard
   m_TagString: Untagged
@@ -488,6 +489,31 @@ Transform:
   m_Father: {fileID: 1994765821}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &572254553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572254551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da862f6a3ad61334aae68294036536aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rewiredInputManager: {fileID: 1523198875}
+  _absoluteAxisSensitivity: 300
+  _scaleAbsoluteAxesToScreen: 0
+  _runInEditMode: 0
+  _playerMappings:
+  - _playerId: 0
+    _actionMappings:
+    - _cinemachineAxis: Mouse X
+      _rewiredActionName: Mouse X
+      _rewiredActionId: 2
+    - _cinemachineAxis: Mouse Y
+      _rewiredActionName: Mouse Y
+      _rewiredActionId: 3
 --- !u!1 &880495980
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,7 +571,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_CommonLens: 1
   m_Lens:
-    FieldOfView: 60
+    FieldOfView: 45
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -689,7 +715,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 60
+    FieldOfView: 45
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -1111,7 +1137,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 60
+    FieldOfView: 45
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -1681,7 +1707,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 60
+  field of view: 45
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -1758,7 +1784,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1523198876}
   - component: {fileID: 1523198875}
-  - component: {fileID: 1523198877}
   m_Layer: 0
   m_Name: Rewired Input Manager
   m_TagString: Untagged
@@ -1803,7 +1828,7 @@ MonoBehaviour:
       ps4_assignJoysticksByPS4JoyId: 1
       useSteamControllerSupport: 1
       logToScreen: 0
-      runInEditMode: 1
+      runInEditMode: 0
       allowInputInEditorSceneView: 0
       platformVars_windowsStandalone:
         disableKeyboard: 0
@@ -1836,8 +1861,8 @@ MonoBehaviour:
         disableMouse: 0
         ignoreInputWhenAppNotInFocus: 1
       platformVars_android:
-        disableKeyboard: 0
-        disableMouse: 0
+        disableKeyboard: 1
+        disableMouse: 1
         ignoreInputWhenAppNotInFocus: 1
       platformVars_ps4:
         disableKeyboard: 0
@@ -1880,7 +1905,7 @@ MonoBehaviour:
         ignoreInputWhenAppNotInFocus: 1
         useNativeKeyboard: 1
         useNativeMouse: 1
-      maxJoysticksPerPlayer: 1
+      maxJoysticksPerPlayer: 10
       autoAssignJoysticks: 1
       assignJoysticksToPlayingPlayersOnly: 0
       distributeJoysticksEvenly: 1
@@ -2264,31 +2289,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1523198877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1523198874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da862f6a3ad61334aae68294036536aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rewiredInputManager: {fileID: 1523198875}
-  _absoluteAxisSensitivity: 300
-  _scaleAbsoluteAxesToScreen: 0
-  _runInEditMode: 1
-  _playerMappings:
-  - _playerId: 0
-    _actionMappings:
-    - _cinemachineAxis: Mouse X
-      _rewiredActionName: Mouse X
-      _rewiredActionId: 2
-    - _cinemachineAxis: Mouse Y
-      _rewiredActionName: Mouse Y
-      _rewiredActionId: 3
 --- !u!1 &1715589270
 GameObject:
   m_ObjectHideFlags: 3
@@ -2350,7 +2350,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 60
+    FieldOfView: 45
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000

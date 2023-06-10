@@ -486,6 +486,7 @@ GameObject:
   - component: {fileID: 4284461939073793128}
   - component: {fileID: 8339083971783327900}
   - component: {fileID: 6027949242987894507}
+  - component: {fileID: 7698442870457464357}
   m_Layer: 0
   m_Name: VRHandPlayer
   m_TagString: Untagged
@@ -554,6 +555,8 @@ MonoBehaviour:
     component: {fileID: 4284461939073793128}
   - componentID: 4
     component: {fileID: 1948611842789778210}
+  - componentID: 5
+    component: {fileID: 7698442870457464357}
   _childViews:
   - componentID: 1
     component: {fileID: 1993549267779495939}
@@ -634,6 +637,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7698442870457464357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6901311888271401986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ebdbddc7c961a947b7bccffaa7cab40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  echoCancellation: 0
 --- !u!1 &7512597869641359694
 GameObject:
   m_ObjectHideFlags: 0
