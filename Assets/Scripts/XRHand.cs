@@ -43,14 +43,15 @@ namespace Assets.Scripts
         bool layerIndexFound = false;
         bool foundInputDevice = false;
 
-        public RealtimeView _realtimeView;
+        private RealtimeView _realtimeView;
+        public HandSync _handSync;
 
         private void Awake()
         {
             if (isRealtimeTrackedVersion)
             {
                 _realtimeView = GetComponentInParent<RealtimeView>();
-                
+                _handSync = GetComponentInParent<HandSync>();
             }
         }
 
@@ -80,14 +81,9 @@ namespace Assets.Scripts
                 inputDevice = GetInputDevice();
             }
 
-            if (isRealtimeTrackedVersion)
-            {
+            GetInput();
 
-            }
-            else
-            {
-                AnimateHand();
-            }
+            AnimateHand();
         }
 
         InputDevice GetInputDevice()
@@ -115,13 +111,39 @@ namespace Assets.Scripts
             return new InputDevice();
         }
 
+        void GetInput()
+        {
+            if (!isRealtimeTrackedVersion || (isRealtimeTrackedVersion && _realtimeView.isOwnedLocallySelf))
+            {
+                if (foundInputDevice)
+                {
+                    inputDevice.TryGetFeatureValue(CommonUsages.trigger, out indexValue);
+                    inputDevice.TryGetFeatureValue(CommonUsages.grip, out gripValue);
+                    inputDevice.TryGetFeatureValue(CommonUsages.primaryTouch, out primaryTouch);
+                    inputDevice.TryGetFeatureValue(CommonUsages.secondaryTouch, out secondaryTouch);
+                }
+
+                if (isRealtimeTrackedVersion)
+                {
+                    _handSync.handModel.indexValue = indexValue;
+                    _handSync.handModel.gripValue = gripValue;
+                    _handSync.handModel.primaryTouch = primaryTouch;
+                    _handSync.handModel.secondaryTouch = secondaryTouch;
+                }
+            }
+
+            if (isRealtimeTrackedVersion)
+            {
+                indexValue = _handSync.handModel.indexValue;
+                gripValue = _handSync.handModel.gripValue;
+                primaryTouch = _handSync.handModel.primaryTouch;
+                secondaryTouch = _handSync.handModel.secondaryTouch;
+            }
+        }
+
+
         void AnimateHand()
         {
-            inputDevice.TryGetFeatureValue(CommonUsages.trigger, out indexValue);
-            inputDevice.TryGetFeatureValue(CommonUsages.grip, out gripValue);
-            inputDevice.TryGetFeatureValue(CommonUsages.primaryTouch, out primaryTouch);
-            inputDevice.TryGetFeatureValue(CommonUsages.secondaryTouch, out secondaryTouch);
-
             if (!layerIndexFound)
             {
                 layerIndexFound = true;
