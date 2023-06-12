@@ -68,7 +68,7 @@ namespace Assets.Scripts
 
                 if (isRealtimeTrackedVersion)
                 {
-                    handMeshRenderer.enabled = false;
+                    //handMeshRenderer.enabled = false;
                 }
             }
         }
@@ -113,7 +113,7 @@ namespace Assets.Scripts
 
         void GetInput()
         {
-            if (!isRealtimeTrackedVersion || (isRealtimeTrackedVersion && _realtimeView.isOwnedLocallySelf))
+            if (!isRealtimeTrackedVersion || (isRealtimeTrackedVersion && _realtimeView.isOwnedLocallyInHierarchy))
             {
                 if (foundInputDevice)
                 {
@@ -129,6 +129,9 @@ namespace Assets.Scripts
                     _handSync.handModel.gripValue = gripValue;
                     _handSync.handModel.primaryTouch = primaryTouch;
                     _handSync.handModel.secondaryTouch = secondaryTouch;
+
+                    //Debug.Log(_handSync.handModel.indexValue);
+
                 }
             }
 
