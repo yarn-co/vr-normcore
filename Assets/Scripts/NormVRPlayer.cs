@@ -24,7 +24,6 @@ public class NormVRPlayer : MonoBehaviour
 
     public float speed = 6f;
 
-    private Vector3 inputMovement = new();
     private Vector2 moveVector = new();
 
     private void Awake()

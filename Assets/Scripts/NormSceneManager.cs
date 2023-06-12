@@ -102,8 +102,8 @@ namespace Spacebar.Realtime
                 options.destroyWhenLastClientLeaves = true;
                 options.useInstance = _realtime;
 
-                _avatar.rightHand.gameObject.SetActive(false);
-                _avatar.leftHand.gameObject.SetActive(false);
+                //_avatar.leftHand.Find("CustomHandLeft").gameObject.SetActive(false);
+                //_avatar.rightHand.Find("CustomHandRight").gameObject.SetActive(false);
 
                 /*
                  * Block Hands!
@@ -122,7 +122,7 @@ namespace Spacebar.Realtime
                     leftFollowerObject.GetComponent<RealtimeTransform>().RequestOwnership();
                 }
                 */
-                
+
             }
             else
             {
