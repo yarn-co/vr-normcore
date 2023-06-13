@@ -66,7 +66,7 @@ public class XRHand : MonoBehaviour
         if (handAnimator == null) handAnimator = GetComponentInChildren<Animator>();
         if (handAnimator == null) handAnimator = GetComponentInParent<Animator>();
 
-        if (_realtimeView.isOwnedLocallyInHierarchy)
+        if (isRealtimeTrackedVersion && _realtimeView.isOwnedLocallyInHierarchy)
         {
             inputDevice = GetInputDevice();
 

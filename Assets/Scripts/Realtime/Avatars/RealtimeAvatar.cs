@@ -179,7 +179,7 @@ namespace Spacebar.Realtime {
                     updateRightHandWithXRNode = true;
                 }
             }
-
+            
             // Update head/hands using XRNode APIs if needed
             if (updateHeadWithXRNode || updateLeftHandWithXRNode || updateRightHandWithXRNode) {
                 InputTracking.GetNodeStates(_nodeStates); // the list is cleared by GetNodeStates

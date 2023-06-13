@@ -35,9 +35,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/NormcoreCrossplay.unity
     guid: 202e0c2db8495724fb127fa2efdb6b1d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NormcoreTouchHands.unity
     guid: 4ace79a21d21d1d43ab31e541472ec42
+  - enabled: 1
+    path: Assets/Scenes/NormcoreTouchHandsXRI.unity
+    guid: 87bf6c7955334d543892323de5d692a5
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260,
       type: 2}

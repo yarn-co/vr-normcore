@@ -78,22 +78,22 @@ PrefabInstance:
     - target: {fileID: 3717158136064255018, guid: ba1fa4a8c66106b4988c88fe4b8e8502,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3717158136064255018, guid: ba1fa4a8c66106b4988c88fe4b8e8502,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.015
       objectReference: {fileID: 0}
     - target: {fileID: 3717158136064255018, guid: ba1fa4a8c66106b4988c88fe4b8e8502,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.014
       objectReference: {fileID: 0}
     - target: {fileID: 3717158136064255018, guid: ba1fa4a8c66106b4988c88fe4b8e8502,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.09
       objectReference: {fileID: 0}
     - target: {fileID: 3717158136064255018, guid: ba1fa4a8c66106b4988c88fe4b8e8502,
         type: 3}
@@ -164,3 +164,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hand: {fileID: 0}
+  grabbing: {fileID: 0}
+  grabbable: {fileID: 0}
+  isGrabbing: 0

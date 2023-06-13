@@ -124,6 +124,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &358641499 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9014170783705847996, guid: 895f6f3c2d334633b5800312285058d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 2130213449}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &572254551
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,6 +841,12 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1315462468}
+--- !u!4 &1307846032 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9014170785475729501, guid: 895f6f3c2d334633b5800312285058d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 2130213449}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1315462467
 GameObject:
   m_ObjectHideFlags: 3
@@ -2037,11 +2049,11 @@ MonoBehaviour:
   keyboardAvatarPrefab: {fileID: 5270862196115881026, guid: 7c0f52c317601134ca23db2321281b74,
     type: 3}
   XRRig: {fileID: 621974248}
-  XRAvatarPrefab: {fileID: 6901311888271401986, guid: 948e069083ea43645afff8e949cc610f,
+  XRAvatarPrefab: {fileID: 1435502846325602, guid: 26adcf24b06575d4d904215995796da4,
     type: 3}
-  XRHead: {fileID: 0}
-  XRLeftHand: {fileID: 414912, guid: e6ba3498ffa1e534b91a07264266e6b8, type: 3}
-  XRRightHand: {fileID: 422740, guid: ba1fa4a8c66106b4988c88fe4b8e8502, type: 3}
+  XRHead: {fileID: 2130213457}
+  XRLeftHand: {fileID: 1307846032}
+  XRRightHand: {fileID: 358641499}
   avatarManager: {fileID: 1994765826}
   isXRMode: 0
 --- !u!4 &1994765821
@@ -2314,6 +2326,11 @@ PrefabInstance:
       propertyPath: m_TrackingStateInput.m_Action.m_Name
       value: Tracking State Input
       objectReference: {fileID: 0}
+    - target: {fileID: 3412649390972202448, guid: 895f6f3c2d334633b5800312285058d2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3415145736139425353, guid: 895f6f3c2d334633b5800312285058d2,
         type: 3}
       propertyPath: m_IsActive
@@ -2384,6 +2401,11 @@ PrefabInstance:
       propertyPath: m_HoverToSelect
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6454594071094758631, guid: 895f6f3c2d334633b5800312285058d2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7313654230448209575, guid: 895f6f3c2d334633b5800312285058d2,
         type: 3}
       propertyPath: m_Name
@@ -2414,6 +2436,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8677371567480465662, guid: 895f6f3c2d334633b5800312285058d2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014170783705847993, guid: 895f6f3c2d334633b5800312285058d2,
+        type: 3}
+      propertyPath: m_ModelPrefab
+      value: 
+      objectReference: {fileID: 2033827400029104297, guid: 6ab2321331ca3fa45869bf1e02ea3487,
+        type: 3}
+    - target: {fileID: 9014170785475729497, guid: 895f6f3c2d334633b5800312285058d2,
+        type: 3}
+      propertyPath: m_ModelPrefab
+      value: 
+      objectReference: {fileID: 4972111615878204871, guid: 1f0bc47bd28a1814bba3808062427f0b,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2479,3 +2518,9 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!4 &2130213457 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9014170783809206335, guid: 895f6f3c2d334633b5800312285058d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 2130213449}
+  m_PrefabAsset: {fileID: 0}
