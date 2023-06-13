@@ -146,7 +146,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &572254552
 Transform:
   m_ObjectHideFlags: 0
@@ -179,15 +179,15 @@ MonoBehaviour:
   _rewiredInputManager: {fileID: 0}
   _absoluteAxisSensitivity: 300
   _scaleAbsoluteAxesToScreen: 0
-  _runInEditMode: 0
+  _runInEditMode: 1
   _playerMappings:
   - _playerId: 0
     _actionMappings:
     - _cinemachineAxis: Mouse X
-      _rewiredActionName: Mouse X
+      _rewiredActionName: Look Horizontal
       _rewiredActionId: 2
     - _cinemachineAxis: Mouse Y
-      _rewiredActionName: Mouse Y
+      _rewiredActionName: Look Vertical
       _rewiredActionId: 3
 --- !u!1 &621974248 stripped
 GameObject:
@@ -1470,7 +1470,7 @@ MonoBehaviour:
       ps4_assignJoysticksByPS4JoyId: 1
       useSteamControllerSupport: 1
       logToScreen: 0
-      runInEditMode: 0
+      runInEditMode: 1
       allowInputInEditorSceneView: 0
       platformVars_windowsStandalone:
         disableKeyboard: 0
@@ -2043,7 +2043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4cbd90a65e7b754c81cf026a6ae2974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceDesktop: 0
+  forceDesktop: 1
   keyboardController: {fileID: 572254551}
   keyboardHead: {fileID: 0}
   keyboardAvatarPrefab: {fileID: 5270862196115881026, guid: 7c0f52c317601134ca23db2321281b74,
@@ -2097,7 +2097,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1994765819}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a508b8d4dab14643ad251abaa5c0f3d, type: 3}
   m_Name: 
@@ -2293,6 +2293,21 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3127728406573987374, guid: 895f6f3c2d334633b5800312285058d2,
         type: 3}
+      propertyPath: m_EnableXRInput
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127728406573987374, guid: 895f6f3c2d334633b5800312285058d2,
+        type: 3}
+      propertyPath: m_EnableMouseInput
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127728406573987374, guid: 895f6f3c2d334633b5800312285058d2,
+        type: 3}
+      propertyPath: m_EnableTouchInput
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127728406573987374, guid: 895f6f3c2d334633b5800312285058d2,
+        type: 3}
       propertyPath: m_EnableGamepadInput
       value: 0
       objectReference: {fileID: 0}
@@ -2410,6 +2425,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Complete XR Origin Set Up
+      objectReference: {fileID: 0}
+    - target: {fileID: 7313654230448209575, guid: 895f6f3c2d334633b5800312285058d2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7696548424635294051, guid: 895f6f3c2d334633b5800312285058d2,
         type: 3}
