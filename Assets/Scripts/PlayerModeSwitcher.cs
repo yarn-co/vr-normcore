@@ -5,7 +5,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.XR.Management;
-using Spacebar;
+using Spacebar.Realtime;
 
 public class PlayerModeSwitcher : MonoBehaviour
 {
@@ -27,6 +27,11 @@ public class PlayerModeSwitcher : MonoBehaviour
     {
         StartCoroutine(StartXR());
         StartCoroutine(RequestMicrophone());
+    }
+
+    public void Start()
+    {
+        avatarManager.avatarCreated += OnAvatarCreated;
     }
 
     private void OnDestroy()
@@ -121,16 +126,18 @@ public class PlayerModeSwitcher : MonoBehaviour
         avatarManager.localAvatarPrefab = XRAvatarPrefab;
     }
 
-    /*
-
     public void OnAvatarCreated(RealtimeAvatarManager avatarManager, RealtimeAvatar avatar, bool isLocalAvatar)
     {
+        Debug.Log("YAAAAY Avatar Created!");
+
         if (!isLocalAvatar) return;
 
-        avatar.localPlayer.root = XRRig.transform;
-        avatar.localPlayer.head = XRHead;
-        avatar.localPlayer.leftHand = XRLeftHand;
-        avatar.localPlayer.rightHand = XRRightHand;
-
-    }*/
+        if (isXRMode)
+        { 
+            avatar.localPlayer.root = XRRig.transform;
+            avatar.localPlayer.head = XRHead;
+            avatar.localPlayer.leftHand = XRLeftHand;
+            avatar.localPlayer.rightHand = XRRightHand;
+        }
+    }
 }

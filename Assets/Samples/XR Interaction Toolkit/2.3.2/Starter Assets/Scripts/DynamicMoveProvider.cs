@@ -113,6 +113,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         /// <inheritdoc />
         protected override Vector3 ComputeDesiredMove(Vector2 input)
         {
+            //return Vector3.zero;
+
             // Don't need to do anything if the total input is zero.
             // This is the same check as the base method.
             if (input == Vector2.zero)
@@ -175,7 +177,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             var rightHandValue = rightHandMoveAction.action?.ReadValue<Vector2>() ?? Vector2.zero;
 
             var totalSqrMagnitude = leftHandValue.sqrMagnitude + rightHandValue.sqrMagnitude;
-            var leftHandBlend = 0.5f;
+            var leftHandBlend = 0.99f;
             if (totalSqrMagnitude > Mathf.Epsilon)
                 leftHandBlend = leftHandValue.sqrMagnitude / totalSqrMagnitude;
 

@@ -144,6 +144,8 @@ namespace Spacebar.Realtime {
                 transform.localScale = _localPlayer.root.localScale;
             }
 
+            //Debug.Log(transform.position + " : " + _localPlayer.root.position);
+
             // Head
             if (_localPlayer.head != null) {
                 model.headActive = _localPlayer.head.gameObject.activeSelf;

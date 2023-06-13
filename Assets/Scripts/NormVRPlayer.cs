@@ -68,13 +68,13 @@ public class NormVRPlayer : MonoBehaviour
 
     private void LocalUpdate()
     {
-        GetInput();
+        //GetInput();
 
         // Use WASD input and the camera look direction to calculate the movement target
-        CalculateTargetMovement();
+        //CalculateTargetMovement();
 
         // Check if we should jump this frame
-        CheckForJump();
+        //CheckForJump();
     }
 
     private void GetInput()
@@ -105,7 +105,7 @@ public class NormVRPlayer : MonoBehaviour
     private void LocalFixedUpdate()
     {
         // Move the player based on the input
-        MovePlayer();
+        //MovePlayer();
 
         // Animate the character to match the player movement
         //AnimateCharacter();

@@ -46,8 +46,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handType: 0
+  indexValue: 0
+  gripValue: 0
+  primaryTouch: 0
+  secondaryTouch: 0
   handMeshRenderer: {fileID: 0}
   handAnimator: {fileID: 0}
+  isRealtimeTrackedVersion: 0
   pinchAnimationParameter: Pinch
   flexAnimationParameter: Flex
   poseAnimationParameter: Pose
@@ -55,6 +60,8 @@ MonoBehaviour:
   pointAnimationLayer: Point Layer
   thumbAnimationLayer: Thumb Layer
   maxGripToPinch: 0.05
+  isGripping: 0
+  _handSync: {fileID: 0}
 --- !u!1001 &7823508717453146582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -122,6 +129,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7143034292494061509, guid: e6ba3498ffa1e534b91a07264266e6b8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8912489739974245987, guid: e6ba3498ffa1e534b91a07264266e6b8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

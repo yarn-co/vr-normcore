@@ -52,6 +52,7 @@ MonoBehaviour:
   secondaryTouch: 0
   handMeshRenderer: {fileID: 0}
   handAnimator: {fileID: 0}
+  isRealtimeTrackedVersion: 0
   pinchAnimationParameter: Pinch
   flexAnimationParameter: Flex
   poseAnimationParameter: Pose
@@ -59,6 +60,8 @@ MonoBehaviour:
   pointAnimationLayer: Point Layer
   thumbAnimationLayer: Thumb Layer
   maxGripToPinch: 0.05
+  isGripping: 0
+  _handSync: {fileID: 0}
 --- !u!1001 &2621371205912018331
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -130,7 +133,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7351535650125960987, guid: ba1fa4a8c66106b4988c88fe4b8e8502,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1972914451078117263}
   m_SourcePrefab: {fileID: 100100000, guid: ba1fa4a8c66106b4988c88fe4b8e8502, type: 3}
 --- !u!4 &1726291084168042929 stripped
 Transform:
@@ -138,3 +145,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2621371205912018331}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4784262616416676480 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7351535650125960987, guid: ba1fa4a8c66106b4988c88fe4b8e8502,
+    type: 3}
+  m_PrefabInstance: {fileID: 2621371205912018331}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1972914451078117263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4784262616416676480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d843416465ea33844bf37e25a8a0142f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hand: {fileID: 0}
