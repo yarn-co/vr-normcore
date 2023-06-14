@@ -51,7 +51,10 @@ public class DesktopPlayer : MonoBehaviour
 
         cameraTarget = Camera.main.transform;
 
-        player = ReInput.players.GetPlayer(playerId);
+        if (ReInput.players != null)
+        {
+            player = ReInput.players.GetPlayer(playerId);
+        }
     }
 
     private void Start()

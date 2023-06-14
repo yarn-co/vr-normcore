@@ -354,6 +354,7 @@ GameObject:
   - component: {fileID: 114272718057082298}
   - component: {fileID: 2542870503496581613}
   - component: {fileID: 9062525596294459632}
+  - component: {fileID: 2610314694818512905}
   m_Layer: 0
   m_Name: VRPlayer
   m_TagString: Untagged
@@ -487,6 +488,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2610314694818512905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435502846325602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e33a9e6d264e81f43a2c3f000d7ec922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerId: 0
+  _character: {fileID: 4098411418399560}
 --- !u!1 &1677690864260768
 GameObject:
   m_ObjectHideFlags: 0

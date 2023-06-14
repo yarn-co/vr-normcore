@@ -4,6 +4,7 @@ using Normal.Realtime;
 using Unity.XR.CoreUtils;
 using UnityEngine.XR;
 using Cinemachine;
+using System.Drawing;
 
 namespace Spacebar.Realtime
 {
@@ -17,17 +18,15 @@ namespace Spacebar.Realtime
 
         private PlayerModeSwitcher _modeSwitcher;
 
-        private Camera _camera;
-        
-        private RigidFollower rightFollower;
-        private RigidFollower leftFollower;
-
         public CinemachineFreeLook CMFreeLook;
 
         public bool userPresent = false;
 
         private void Awake()
         {
+            // Set physics timestep to 72hz
+            Time.fixedDeltaTime = 1.0f / 72.0f;
+
             // Get the Realtime component on this game object
             _realtime = GetComponent<Normal.Realtime.Realtime>();
 
@@ -35,12 +34,10 @@ namespace Spacebar.Realtime
 
             _modeSwitcher = GetComponent<PlayerModeSwitcher>();
 
-            _camera = Camera.main;
-
-            bool present = isVRUserPresent();
+            bool present = IsVRUserPresent();
         }
 
-        public bool isVRUserPresent()
+        public bool IsVRUserPresent()
         {
             //Debug.Log("Detecting VR User Presence..");
 
@@ -61,7 +58,7 @@ namespace Spacebar.Realtime
 
         private void Update()
         {
-            bool present = isVRUserPresent();
+            bool present = IsVRUserPresent();
 
             if (_avatar == null && _avatarManager.localAvatar != null)
             {
@@ -71,21 +68,19 @@ namespace Spacebar.Realtime
 
                 GotAvatar();
             }
+        }
 
-            if (_avatar != null)
-            {
-                if (_avatar.rightHand && rightFollower && !rightFollower.target)
-                {
-                    Debug.Log("Added Follower on Left Hand");
-                    rightFollower.target = _avatar.rightHand;
-                }
+        private void SetLocalAvatarColor()
+        {
+            UnityEngine.Color color = _avatar.GetComponent<ColorSync>()._model.color;
 
-                if (_avatar.leftHand && leftFollower && !leftFollower.target)
-                {
-                    Debug.Log("Added Follower on Right Hand");
-                    leftFollower.target = _avatar.leftHand;
-                }
-            }
+            Debug.Log("Setting up Local Avatar Color: " + color);
+            
+            SkinnedMeshRenderer leftHandRenderer = _modeSwitcher.XRLeftHand.GetComponentInChildren<SkinnedMeshRenderer>();
+            SkinnedMeshRenderer rightHandRenderer = _modeSwitcher.XRRightHand.GetComponentInChildren<SkinnedMeshRenderer>();
+
+            leftHandRenderer.material.color = color;
+            rightHandRenderer.material.color = color;
         }
 
         private void GotAvatar()
@@ -94,7 +89,11 @@ namespace Spacebar.Realtime
             if (_modeSwitcher.isXRMode)
             {
                 //set up XR player
+                _avatar.GetComponent<ColorSync>().onColorChange += SetLocalAvatarColor;
 
+                
+
+                /*
                 Normal.Realtime.Realtime.InstantiateOptions options = new Normal.Realtime.Realtime.InstantiateOptions();
                 options.ownedByClient = true;
                 options.preventOwnershipTakeover = true;

@@ -6,6 +6,10 @@ using Normal.Realtime;
 public class ColorSync : RealtimeComponent<ColorSyncModel>
 {
     public MeshRenderer _meshRenderer;
+    public ColorSyncModel _model;
+
+    public delegate void ColorDelegate();
+    public ColorDelegate onColorChange;
 
     private void Awake()
     {
@@ -23,6 +27,8 @@ public class ColorSync : RealtimeComponent<ColorSyncModel>
 
         if (currentModel != null)
         {
+            _model = currentModel;
+
             // If this is a model that has no data set on it, populate it with the current mesh renderer color.
             if (currentModel.isFreshModel)
                 currentModel.color = _meshRenderer.material.color;
@@ -39,6 +45,8 @@ public class ColorSync : RealtimeComponent<ColorSyncModel>
     {
         // Update the mesh renderer
         UpdateMeshRendererColor();
+
+        onColorChange?.Invoke();
     }
 
     private void UpdateMeshRendererColor()
