@@ -45,14 +45,14 @@ public class ColorSync : RealtimeComponent<ColorSyncModel>
     {
         // Update the mesh renderer
         UpdateMeshRendererColor();
-
-        onColorChange?.Invoke();
     }
 
     private void UpdateMeshRendererColor()
     {
         // Get the color from the model and set it on the mesh renderer.
         _meshRenderer.material.color = model.color;
+
+        onColorChange?.Invoke();
     }
 
     public void SetColor(Color color)
