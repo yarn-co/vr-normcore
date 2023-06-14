@@ -35,7 +35,7 @@ Transform:
   - {fileID: 5169369563498382314}
   - {fileID: 2741453780207452478}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &945061000816582183
 PrefabInstance:
@@ -124,6 +124,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Orange NormCube
+      objectReference: {fileID: 0}
+    - target: {fileID: 9056034398909592885, guid: dcc290ba92839e34392bae5194339bda,
+        type: 3}
+      propertyPath: _viewUUID
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -223,6 +228,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Purple NormCube
+      objectReference: {fileID: 0}
+    - target: {fileID: 9056034398909592885, guid: dcc290ba92839e34392bae5194339bda,
+        type: 3}
+      propertyPath: _viewUUID
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -329,6 +339,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Red Cube
       objectReference: {fileID: 0}
+    - target: {fileID: 9056034398909592885, guid: dcc290ba92839e34392bae5194339bda,
+        type: 3}
+      propertyPath: _viewUUID
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -427,6 +442,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Blue NormCube
+      objectReference: {fileID: 0}
+    - target: {fileID: 9056034398909592885, guid: dcc290ba92839e34392bae5194339bda,
+        type: 3}
+      propertyPath: _viewUUID
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -527,6 +547,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Yellow NormCube
       objectReference: {fileID: 0}
+    - target: {fileID: 9056034398909592885, guid: dcc290ba92839e34392bae5194339bda,
+        type: 3}
+      propertyPath: _viewUUID
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -625,6 +650,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Teal NormCube
+      objectReference: {fileID: 0}
+    - target: {fileID: 9056034398909592885, guid: dcc290ba92839e34392bae5194339bda,
+        type: 3}
+      propertyPath: _viewUUID
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
