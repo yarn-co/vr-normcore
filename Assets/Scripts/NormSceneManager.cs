@@ -22,10 +22,13 @@ namespace Spacebar.Realtime
 
         public bool userPresent = false;
 
+        public float fixedTimeSpeed = 90.0f;
+
         private void Awake()
         {
-            // Set physics timestep to 72hz
-            Time.fixedDeltaTime = 1.0f / 72.0f;
+            // Set physics timestep
+            Time.fixedDeltaTime = 1.0f / fixedTimeSpeed;
+            Time.maximumDeltaTime = 1.0f / fixedTimeSpeed;
 
             // Get the Realtime component on this game object
             _realtime = GetComponent<Normal.Realtime.Realtime>();
