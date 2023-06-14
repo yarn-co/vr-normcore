@@ -14,6 +14,7 @@ public class PlayerModeSwitcher : MonoBehaviour
     public Transform keyboardHead;
     public GameObject keyboardAvatarPrefab;
 
+    public GameObject XRController;
     public GameObject XRRig;
     public GameObject XRAvatarPrefab;
     public Transform XRHead;
@@ -109,7 +110,7 @@ public class PlayerModeSwitcher : MonoBehaviour
         Debug.Log("NOT XR MODE!");
 
         isXRMode = false;
-        XRRig.SetActive(false);
+        XRController.SetActive(false);
         keyboardController.SetActive(true);
 
         avatarManager.localAvatarPrefab = keyboardAvatarPrefab;
@@ -120,7 +121,7 @@ public class PlayerModeSwitcher : MonoBehaviour
         Debug.Log("YAAAAY XR MODE!");
 
         isXRMode = true;
-        XRRig.SetActive(true);
+        XRController.SetActive(true);
         keyboardController.SetActive(false);
 
         avatarManager.localAvatarPrefab = XRAvatarPrefab;

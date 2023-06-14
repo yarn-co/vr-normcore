@@ -128,7 +128,7 @@ public class DesktopPlayer : MonoBehaviour
         Quaternion cameraLookForward = Quaternion.LookRotation(cameraLookForwardVector);
 
         //Debug.Log("cameraLookForwardVector: " + cameraLookForwardVector);
-        Debug.DrawRay(Vector3.zero, cameraTarget.forward, Color.red, 1f);
+        //Debug.DrawRay(Vector3.zero, cameraTarget.forward, Color.red, 1f);
 
         // Use the camera look direction to convert the input movement from camera space to world space
         _targetMovement = cameraLookForward * inputMovement;
