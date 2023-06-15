@@ -9,10 +9,16 @@ using Spacebar.Realtime;
 
 public class PlayerModeSwitcher : MonoBehaviour
 {
-    public bool forceDesktop = false;
-    public GameObject keyboardController;
-    public Transform keyboardHead;
-    public GameObject keyboardAvatarPrefab;
+    public bool screenMode = false;
+    public GameObject screenController;
+    public Transform screenHead;
+    public GameObject screenAvatarPrefab;
+
+    public float screenFixedUpdateSpeed;
+    public float screenFixedUpdateMax;
+
+    public float XRFixedUpdateSpeed;
+    public float XRFixedUpdateMax;
 
     public GameObject XRController;
     public GameObject XRRig;
@@ -26,6 +32,19 @@ public class PlayerModeSwitcher : MonoBehaviour
 
     private void Awake()
     {
+        // Set physics timestep
+        if (screenMode)
+        {
+            Time.fixedDeltaTime = 1.0f / screenFixedUpdateSpeed;
+            Time.maximumDeltaTime = 1.0f / screenFixedUpdateMax;
+        }
+        else
+        {
+            Time.fixedDeltaTime = 1.0f / XRFixedUpdateSpeed;
+            Time.maximumDeltaTime = 1.0f / XRFixedUpdateMax;
+        }
+        
+
         StartCoroutine(StartXR());
         StartCoroutine(RequestMicrophone());
     }
@@ -59,7 +78,7 @@ public class PlayerModeSwitcher : MonoBehaviour
 
     public IEnumerator StartXR()
     {
-        if (forceDesktop)
+        if (screenMode)
         {
             NotXRMode();
             yield break;
@@ -111,9 +130,9 @@ public class PlayerModeSwitcher : MonoBehaviour
 
         isXRMode = false;
         XRController.SetActive(false);
-        keyboardController.SetActive(true);
+        screenController.SetActive(true);
 
-        avatarManager.localAvatarPrefab = keyboardAvatarPrefab;
+        avatarManager.localAvatarPrefab = screenAvatarPrefab;
     }
 
     void XRMode()
@@ -122,7 +141,7 @@ public class PlayerModeSwitcher : MonoBehaviour
 
         isXRMode = true;
         XRController.SetActive(true);
-        keyboardController.SetActive(false);
+        screenController.SetActive(false);
 
         avatarManager.localAvatarPrefab = XRAvatarPrefab;
     }
