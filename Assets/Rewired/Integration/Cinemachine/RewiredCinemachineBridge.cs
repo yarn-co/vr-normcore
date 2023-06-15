@@ -3,6 +3,7 @@
 namespace Rewired.Integration.Cinemachine {
     using UnityEngine;
     using System.Collections.Generic;
+    using Spacebar;
 
     /// <summary>
     /// Changes input source for Cinemachine to Rewired.
@@ -32,6 +33,8 @@ namespace Rewired.Integration.Cinemachine {
             public int playerId;
             public int actionId;
         }
+
+        
 
         private const float defaultabsoluteAxisSensitivity = 30f;
 
@@ -139,7 +142,7 @@ namespace Rewired.Integration.Cinemachine {
 
             if(_rewiredInputManager == null) _rewiredInputManager = GetComponent<InputManager_Base>();
 
-            foreach(var m in _playerMappings) {
+            foreach (var m in _playerMappings) {
                 if(ReInput.players.GetPlayer(m._playerId) == null) {
                     Debug.LogError("No Player exists for id " + m._playerId + ".");
                     continue;

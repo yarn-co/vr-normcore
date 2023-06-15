@@ -363,6 +363,7 @@ GameObject:
   m_Component:
   - component: {fileID: 880495981}
   - component: {fileID: 880495982}
+  - component: {fileID: 880495983}
   m_Layer: 0
   m_Name: FreeLook Camera
   m_TagString: Untagged
@@ -482,17 +483,31 @@ MonoBehaviour:
   m_BindingMode: 5
   m_SplineCurvature: 0.2
   m_Orbits:
-  - m_Height: 4.5
+  - m_Height: 10
     m_Radius: 0.5
-  - m_Height: 2.5
-    m_Radius: 5
-  - m_Height: 0
-    m_Radius: 0.2
+  - m_Height: 5
+    m_Radius: 12
+  - m_Height: 0.1
+    m_Radius: 2
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
   - {fileID: 947232102}
   - {fileID: 1211239610}
   - {fileID: 1715589272}
+--- !u!114 &880495983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880495980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d654b8eeca62b4049a8f648e55bf09ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomWheelSensitivity: 100
+  minZoom: 0.08
 --- !u!1 &947232100
 GameObject:
   m_ObjectHideFlags: 3
@@ -1088,7 +1103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 2.5, z: -5}
+  m_FollowOffset: {x: 0, y: 5, z: -12}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -1215,7 +1230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 2.5, z: -5}
+  m_FollowOffset: {x: 0, y: 5, z: -12}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -1342,7 +1357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 2.5, z: -5}
+  m_FollowOffset: {x: 0, y: 5, z: -12}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -2076,7 +2091,7 @@ MonoBehaviour:
         _elementType: 0
         _elementIdentifierId: 2
         _axisRange: 0
-        _invert: 0
+        _invert: 1
         _axisContribution: 0
         _keyboardKeyCode: 0
         _modifierKey1: 0
