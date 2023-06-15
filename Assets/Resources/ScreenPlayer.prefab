@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 3513817489054578873}
   - component: {fileID: 97999255581924117}
   m_Layer: 0
-  m_Name: DesktopPlayer
+  m_Name: ScreenPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

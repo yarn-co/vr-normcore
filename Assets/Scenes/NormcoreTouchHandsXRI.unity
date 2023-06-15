@@ -1638,7 +1638,7 @@ MonoBehaviour:
       ps4_assignJoysticksByPS4JoyId: 1
       useSteamControllerSupport: 1
       logToScreen: 0
-      runInEditMode: 0
+      runInEditMode: 1
       allowInputInEditorSceneView: 0
       platformVars_windowsStandalone:
         disableKeyboard: 0
@@ -2134,7 +2134,7 @@ MonoBehaviour:
   _rewiredInputManager: {fileID: 1523198875}
   _absoluteAxisSensitivity: 300
   _scaleAbsoluteAxesToScreen: 1
-  _runInEditMode: 0
+  _runInEditMode: 1
   _playerMappings:
   - _playerId: 0
     _actionMappings:
@@ -2260,9 +2260,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenMode: 1
-  screenController: {fileID: 0}
+  screenController: {fileID: 572254551}
   screenHead: {fileID: 0}
-  screenAvatarPrefab: {fileID: 0}
+  screenAvatarPrefab: {fileID: 5270862196115881026, guid: 7c0f52c317601134ca23db2321281b74,
+    type: 3}
   screenFixedUpdateSpeed: 60
   screenFixedUpdateMax: 30
   XRFixedUpdateSpeed: 90
