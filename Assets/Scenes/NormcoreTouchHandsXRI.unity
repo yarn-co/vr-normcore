@@ -1993,6 +1993,28 @@ MonoBehaviour:
         _modifierKey1: 0
         _modifierKey2: 0
         _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 5
+        _elementType: 1
+        _elementIdentifierId: 19
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 5
+        _elementType: 1
+        _elementIdentifierId: 21
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 1
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
     keyboardMaps:
     - id: 0
       categoryId: 0
@@ -2091,7 +2113,7 @@ MonoBehaviour:
         _elementType: 0
         _elementIdentifierId: 2
         _axisRange: 0
-        _invert: 1
+        _invert: 0
         _axisContribution: 0
         _keyboardKeyCode: 0
         _modifierKey1: 0
@@ -2147,7 +2169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rewiredInputManager: {fileID: 1523198875}
-  _absoluteAxisSensitivity: 300
+  _absoluteAxisSensitivity: 100
   _scaleAbsoluteAxesToScreen: 1
   _runInEditMode: 1
   _playerMappings:

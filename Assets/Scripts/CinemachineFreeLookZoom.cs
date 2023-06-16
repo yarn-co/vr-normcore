@@ -38,11 +38,11 @@ namespace Spacebar
 
         public void Update()
         {
-            zoomPercent += (player.GetAxis("Look Zoom") / zoomWheelSensitivity);
+            zoomPercent -= (player.GetAxis("Look Zoom") / zoomWheelSensitivity);
             if (zoomPercent < minZoom) zoomPercent = minZoom;
             if (zoomPercent > 1) zoomPercent = 1;
 
-            Debug.Log("Look Zoom: " + zoomPercent);
+            //Debug.Log("Look Zoom: " + zoomPercent);
 
             for (int i = 0; i < freelook.m_Orbits.Length; i++)
             {
