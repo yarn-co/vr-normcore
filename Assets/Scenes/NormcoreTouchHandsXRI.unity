@@ -2301,8 +2301,8 @@ MonoBehaviour:
   screenHead: {fileID: 0}
   screenAvatarPrefab: {fileID: 5270862196115881026, guid: 7c0f52c317601134ca23db2321281b74,
     type: 3}
-  screenFixedUpdateSpeed: 60
-  screenFixedUpdateMax: 30
+  screenFixedUpdateSpeed: 90
+  screenFixedUpdateMax: 90
   XRFixedUpdateSpeed: 90
   XRFixedUpdateMax: 90
   XRController: {fileID: 316962538}

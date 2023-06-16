@@ -43,15 +43,31 @@ public class PlayerModeSwitcher : MonoBehaviour
             Time.fixedDeltaTime = 1.0f / XRFixedUpdateSpeed;
             Time.maximumDeltaTime = 1.0f / XRFixedUpdateMax;
         }
-        
 
+        
         StartCoroutine(StartXR());
         StartCoroutine(RequestMicrophone());
+    }
+
+    private void OnApplicationFocus(bool hasFocus)
+    {
+        if (hasFocus)
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Confined;
+            Debug.Log("Application is focussed");
+        }
+        else
+        {
+            Debug.Log("Application lost focus");
+        }
     }
 
     public void Start()
     {
         avatarManager.avatarCreated += OnAvatarCreated;
+
+
     }
 
     private void OnDestroy()
