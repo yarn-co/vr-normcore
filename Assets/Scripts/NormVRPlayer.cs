@@ -33,8 +33,6 @@ public class NormVRPlayer : MonoBehaviour
 
     public void OnColorChange()
     {
-        Debug.Log("Color Change Delegate: " + _colorSync._model.color);
-
         SkinnedMeshRenderer leftHandMesh = _realtimeAvatar.leftHand.gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
 
         leftHandMesh.material.color = _colorSync._model.color;
