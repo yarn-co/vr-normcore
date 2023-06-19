@@ -140,6 +140,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 4241132945400368396, guid: 9a61da5eee6173f48bd11e181de939a8,
         type: 3}
+      propertyPath: m_HitClosestOnly
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4241132945400368396, guid: 9a61da5eee6173f48bd11e181de939a8,
+        type: 3}
       propertyPath: m_MaxRaycastDistance
       value: 40
       objectReference: {fileID: 0}
