@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8110839683577580175
+--- !u!1 &6278305405882092989
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4972111615878204871}
-  - component: {fileID: 8462287605074465498}
+  - component: {fileID: 6487296973690064938}
+  - component: {fileID: 1987450972504875493}
   m_Layer: 0
   m_Name: XRLeftHand
   m_TagString: Untagged
@@ -17,29 +17,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4972111615878204871
+--- !u!4 &6487296973690064938
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8110839683577580175}
+  m_GameObject: {fileID: 6278305405882092989}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3929327723615761610}
+  - {fileID: 443735549443511344}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8462287605074465498
+--- !u!114 &1987450972504875493
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8110839683577580175}
+  m_GameObject: {fileID: 6278305405882092989}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5812f51236c35e47910e0d70fc4380c, type: 3}
@@ -62,18 +62,23 @@ MonoBehaviour:
   maxGripToPinch: 0.05
   isGripping: 0
   _handSync: {fileID: 0}
---- !u!1001 &7823508717453146582
+--- !u!1001 &6646501768291834156
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 4972111615878204871}
+    m_TransformParent: {fileID: 6487296973690064938}
     m_Modifications:
     - target: {fileID: 5371444198158503346, guid: e6ba3498ffa1e534b91a07264266e6b8,
         type: 3}
       propertyPath: m_Name
       value: CustomHandLeft
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371444198158503346, guid: e6ba3498ffa1e534b91a07264266e6b8,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6491209909542145308, guid: e6ba3498ffa1e534b91a07264266e6b8,
         type: 3}
@@ -145,9 +150,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6ba3498ffa1e534b91a07264266e6b8, type: 3}
---- !u!4 &3929327723615761610 stripped
+--- !u!4 &443735549443511344 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6491209909542145308, guid: e6ba3498ffa1e534b91a07264266e6b8,
     type: 3}
-  m_PrefabInstance: {fileID: 7823508717453146582}
+  m_PrefabInstance: {fileID: 6646501768291834156}
   m_PrefabAsset: {fileID: 0}

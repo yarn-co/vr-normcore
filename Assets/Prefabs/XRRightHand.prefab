@@ -75,6 +75,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CustomHandRight
       objectReference: {fileID: 0}
+    - target: {fileID: 2845499544715605691, guid: ba1fa4a8c66106b4988c88fe4b8e8502,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 3717158136064255018, guid: ba1fa4a8c66106b4988c88fe4b8e8502,
         type: 3}
       propertyPath: m_RootOrder

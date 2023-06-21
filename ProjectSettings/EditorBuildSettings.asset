@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleNetworkBasedGrabbingScene.unity
     guid: 3651a76d14cb8454c96a9486ec26f729
   - enabled: 0
-    path: Assets/Scenes/NetworkShuffleboard.unity
+    path: Assets/Scenes/PhotonShuffleboard.unity
     guid: 42429ce0ab1822f45a550515264225be
   - enabled: 0
     path: Assets/Scenes/NormcoreVRTest.unity
