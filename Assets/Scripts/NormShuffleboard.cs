@@ -10,6 +10,7 @@ using UnityEngine.InputSystem;
 using Spacebar;
 using Spacebar.Realtime;
 using Normal.Realtime;
+using UnityEngine.UIElements;
 
 public class NormShuffleboard : MonoBehaviour
 {
@@ -124,9 +125,12 @@ public class NormShuffleboard : MonoBehaviour
 
         newPuck.GetComponent<RealtimeTransform>().RequestOwnership();
 
-        newPuck.transform.position = new Vector3(0, 1, zPos);
+        Vector3 newPosition = new Vector3(0, 1f, zPos);
+
+        newPuck.transform.position = newPosition;
+        newPuck.GetComponent<Rigidbody>().position = newPosition;
         newPuck.GetComponent<Puck>().team = team;
-        //newPuck.GetComponent<Puck>().side = side;
+        newPuck.GetComponent<Puck>().side = side;
     }
 
     public void ClearPucks()

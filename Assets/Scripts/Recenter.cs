@@ -34,7 +34,7 @@ public class Recenter : MonoBehaviour
 
     void Start()
     {
-        //Debug.Log("Start");
+        Debug.Log("Recenter Start");
 
         xrSystems = GetComponent<XRSubSystems>();
 
@@ -64,7 +64,7 @@ public class Recenter : MonoBehaviour
     {
         testHeight = originScript.CameraInOriginSpaceHeight;
 
-        HeightHistory.AddEntry(testHeight);
+        //HeightHistory.AddEntry(testHeight);
 
         if (!started)
         {
@@ -91,6 +91,11 @@ public class Recenter : MonoBehaviour
                 height = originScript.CameraInOriginSpaceHeight;
 
                 Debug.Log("Floor Mode Height: " + height);
+
+                if(height > 0)
+                {
+                    HeightHistory.AddEntry(height);
+                }
             }
 
             if(originScript.CurrentTrackingOriginMode.ToString() == "Floor" && height > 0){
