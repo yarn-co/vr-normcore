@@ -125,7 +125,7 @@ namespace Spacebar.Realtime
                 //set up non-XR player
 
                 // Get a reference to the player
-                DesktopPlayer player = _avatar.GetComponent<DesktopPlayer>();
+                ScreenPlayer player = _avatar.GetComponent<ScreenPlayer>();
 
                 CMFreeLook.LookAt = _avatar.gameObject.transform;
                 CMFreeLook.Follow = _avatar.gameObject.transform;

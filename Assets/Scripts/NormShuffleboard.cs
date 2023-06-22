@@ -65,17 +65,16 @@ public class NormShuffleboard : MonoBehaviour
                 {
                     Debug.Log("Shrink/Grow");
 
-                    /*
-                    PlayerScale playerScale = localAvatar.GetComponent<PlayerScale>();
+                    NormPlayer normPlayer = localAvatar.GetComponent<NormPlayer>();
 
-                    if (playerScale.Scale == 1)
+                    if (normPlayer.Scale == 1)
                     {
-                        playerScale.Scale = 0.1f;
+                        normPlayer.Scale = 0.1f;
                     }
                     else
                     {
-                        playerScale.Scale = 1;
-                    }*/
+                        normPlayer.Scale = 1;
+                    }
                 }
             }
         }

@@ -3,15 +3,13 @@ using Normal.Realtime;
 using System;
 using Rewired;
 
-public class DesktopPlayer : MonoBehaviour
+public class ScreenPlayer : MonoBehaviour
 {
     public int playerId = 0;
     private Player player; //Rewired player
 
     // Camera
     private Transform cameraTarget;
-    private float _mouseLookX;
-    private float _mouseLookY;
 
     // Physics
     private Vector3 _targetMovement;

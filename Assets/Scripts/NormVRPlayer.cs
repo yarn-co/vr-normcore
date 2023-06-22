@@ -1,6 +1,8 @@
 using UnityEngine;
 using Normal.Realtime;
 using Rewired;
+using Unity.XR.CoreUtils;
+using static UnityEngine.UI.Image;
 
 public class NormVRPlayer : MonoBehaviour
 {
@@ -16,6 +18,10 @@ public class NormVRPlayer : MonoBehaviour
 
     [SerializeField] private Transform _character = default;
 
+    private GameObject _controller;
+
+    private XROrigin _XROrigin;
+
     private void Awake()
     {
         // Store a reference to the RealtimeView for easy access
@@ -24,6 +30,9 @@ public class NormVRPlayer : MonoBehaviour
 
         _colorSync = GetComponent<ColorSync>();
         _colorSync.onColorChange += OnColorChange;
+
+        _controller = GameObject.FindGameObjectWithTag("GameController");
+        _XROrigin = _controller.GetComponent<XROrigin>();
 
         if (ReInput.players != null)
         {
@@ -66,8 +75,6 @@ public class NormVRPlayer : MonoBehaviour
         if (_realtimeView.isOwnedLocallyInHierarchy)
             //LocalUpdate();
     }
-
-    
 
     private void FixedUpdate()
     {
