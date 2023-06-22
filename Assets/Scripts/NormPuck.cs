@@ -77,12 +77,14 @@ public class NormPuck : RealtimeComponent<NormPuckModel>
 
             _model.teamDidChange += TeamChanged;
             _model.isOnTableDidChange += IsOnTableChanged;
+            _model.collisionCountDidChange += CollisionCountChanged;
 
             // If this is a model that has no data set on it, populate it with the current mesh renderer color.
             if (currentModel.isFreshModel)
             {
                 _model.team = Team;
                 _model.side = Side;
+                _model.collisionCount = 0;
             }
 
             // Update the mesh render to match the new model
@@ -115,9 +117,9 @@ public class NormPuck : RealtimeComponent<NormPuckModel>
         }
     }
 
-    private static void CollisionsChanged(NormPuck changed)
+    private void CollisionCountChanged(NormPuckModel model, int value)
     {
-        changed.tableNockSound.Play();
+        tableNockSound.Play();
     }
 
     // Start is called before the first frame update
@@ -128,8 +130,6 @@ public class NormPuck : RealtimeComponent<NormPuckModel>
 
         _realtimeTransform = GetComponent<RealtimeTransform>();
         _puck = GetComponent<Puck>();
-
-        //shuffleboard = Game.Instance.GetComponent<NormShuffleboard>();
     }
 
 
@@ -143,7 +143,6 @@ public class NormPuck : RealtimeComponent<NormPuckModel>
 
     private void Update()
     {
-
         if (_realtimeTransform.isOwnedLocallySelf)
         {
             velocity = myBody.velocity.magnitude;
@@ -171,13 +170,11 @@ public class NormPuck : RealtimeComponent<NormPuckModel>
 
         if (_realtimeTransform.isOwnedLocallySelf)  // has ownershipt
         {
-            //Collisions++;
+            _model.collisionCount++;
 
             if (other.gameObject.CompareTag("Table"))
             {
                 _model.isOnTable = true;
-                //dragSound.volume = 0;
-                //dragSound.Play();
             }
         }
 
@@ -186,12 +183,11 @@ public class NormPuck : RealtimeComponent<NormPuckModel>
 
     private void OnCollisionExit(Collision other)
     {
-        if (true) // has ownershipt
+        if (_realtimeTransform.isOwnedLocallySelf)  // has ownershipt
         {
             if (other.gameObject.CompareTag("Table"))
             {
                 _model.isOnTable = false;
-                //dragSound.Stop();
             }
         }
     }
