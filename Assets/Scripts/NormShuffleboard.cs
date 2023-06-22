@@ -127,10 +127,12 @@ public class NormShuffleboard : MonoBehaviour
 
         Vector3 newPosition = new Vector3(0, 1f, zPos);
 
+        Debug.Log("Making Puck for Team: " + team + " Side: " + side);
+
         newPuck.transform.position = newPosition;
         newPuck.GetComponent<Rigidbody>().position = newPosition;
-        newPuck.GetComponent<Puck>().team = team;
-        newPuck.GetComponent<Puck>().side = side;
+        newPuck.GetComponent<NormPuck>().Team = team;
+        newPuck.GetComponent<NormPuck>().Side = side;
     }
 
     public void ClearPucks()

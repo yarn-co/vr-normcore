@@ -5,16 +5,15 @@ using Normal.Realtime;
 
 public class ColorSync : RealtimeComponent<ColorSyncModel>
 {
-    public MeshRenderer _meshRenderer;
     public ColorSyncModel _model;
+    public MeshRenderer _meshRenderer;
 
     public delegate void ColorDelegate();
     public ColorDelegate onColorChange;
 
     private void Awake()
     {
-        // Get a reference to the mesh renderer
-        //_meshRenderer = GetComponent<MeshRenderer>();
+
     }
 
     protected override void OnRealtimeModelReplaced(ColorSyncModel previousModel, ColorSyncModel currentModel)

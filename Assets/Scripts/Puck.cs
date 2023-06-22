@@ -10,25 +10,10 @@ public class Puck : MonoBehaviour
 
     private MeshRenderer myRenderer;
 
-    public TextMeshPro text; 
+    public TextMeshPro text;
 
     public int side = 1;
-
-    public int team;
-    /*
-    public int team {
-        get { return _team; }
-        set {
-            _team = value;
-            if(value == 1){
-                myRenderer.material = TeamOneMaterial;
-            }else{
-                myRenderer.material = TeamZeroMaterial;
-            }
-        }
-    }*/
-
-
+    public int team = 0;
 
     // Start is called before the first frame update
     void Awake()
@@ -38,19 +23,23 @@ public class Puck : MonoBehaviour
 
     void Start(){
 
-        if(team == 1){
-            myRenderer.material = TeamOneMaterial;
-        }else{
-            myRenderer.material = TeamZeroMaterial;
-        }
-
         text.text = "";
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetTeam(int newTeam)
     {
-        
+        Debug.Log("Puck SetTeam: " +  newTeam);
+
+        team = newTeam;
+
+        if (newTeam == 1)
+        {
+            myRenderer.material = TeamOneMaterial;
+        }
+        else
+        {
+            myRenderer.material = TeamZeroMaterial;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -61,7 +50,7 @@ public class Puck : MonoBehaviour
 
             if(scoreZone.side != side){
 
-                Debug.Log("Triggered " + other.tag + " " + scoreZone.points);
+                Debug.Log("Triggered Puck Side: " + side + " scoreZone Side " + side);
 
                 text.text = scoreZone.points.ToString();
             }
