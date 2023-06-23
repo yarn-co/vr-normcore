@@ -576,7 +576,7 @@ GameObject:
   - component: {fileID: 5801054554504364760}
   - component: {fileID: 7808066182913457730}
   - component: {fileID: 2590360642929068367}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TeleportArea
   m_TagString: Puck
   m_Icon: {fileID: 0}

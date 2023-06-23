@@ -3,12 +3,15 @@ using Normal.Realtime;
 using Rewired;
 using Unity.XR.CoreUtils;
 using static UnityEngine.UI.Image;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class NormVRPlayer : MonoBehaviour
 {
     public int playerId = 0;
 
-    private Player player; //Rewired player
+    private Player _rewiredPlayer; //Rewired player
+
+    private NormPlayer _normPlayer;
 
     private RealtimeView _realtimeView;
 
@@ -20,7 +23,11 @@ public class NormVRPlayer : MonoBehaviour
 
     private GameObject _controller;
 
+    private GameObject _XRRig; 
+
     private XROrigin _XROrigin;
+
+
 
     private void Awake()
     {
@@ -28,16 +35,37 @@ public class NormVRPlayer : MonoBehaviour
         _realtimeView = GetComponent<RealtimeView>();
         _realtimeAvatar = GetComponent<Spacebar.Realtime.RealtimeAvatar>();
 
+        _normPlayer = GetComponent<NormPlayer>();
+        _normPlayer.onScaleChange += OnScaleChange;
+
         _colorSync = GetComponent<ColorSync>();
         _colorSync.onColorChange += OnColorChange;
 
         _controller = GameObject.FindGameObjectWithTag("GameController");
-        _XROrigin = _controller.GetComponent<XROrigin>();
+        _XROrigin = _controller.GetComponentInChildren<XROrigin>();
+        _XRRig = GameObject.FindGameObjectWithTag("XRRig");
 
         if (ReInput.players != null)
         {
-            player = ReInput.players.GetPlayer(playerId);
+            _rewiredPlayer = ReInput.players.GetPlayer(playerId);
         }
+    }
+
+    public void OnScaleChange()
+    {
+        Debug.Log("NormVRPlayer OnScaleChange: " + _normPlayer.Scale);
+
+        float newScale = _normPlayer.Scale;
+
+        Vector3 scaleVector = new(newScale, newScale, newScale);
+
+        if (_realtimeView.isOwnedLocallyInHierarchy)
+        {
+            _XROrigin.transform.localScale = scaleVector;
+            //behavior.Origin.CameraFloorOffsetObject.transform.localPosition = new Vector3(0, behavior.Origin.CameraYOffset * newScale, 0);
+        }
+
+        //player.transform.localScale = scaleVector;
     }
 
     public void OnColorChange()

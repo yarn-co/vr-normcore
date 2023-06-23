@@ -27,6 +27,9 @@ public class NormPlayer : RealtimeComponent<NormPlayerModel>
             _model.scale = scale;
         }
     }
+    public delegate void NormPlayerDelegate();
+    public NormPlayerDelegate onScaleChange;
+
 
     protected override void OnRealtimeModelReplaced(NormPlayerModel previousModel, NormPlayerModel currentModel)
     {
@@ -52,9 +55,16 @@ public class NormPlayer : RealtimeComponent<NormPlayerModel>
     }
     private void ScaleChanged(NormPlayerModel model, float value)
     {
-        //Debug.Log("TeamChanged: " + value);
+        Debug.Log("NormPlayer ScaleChanged: " + value);
 
         scale = value;
+
+        if(!_realtimeView.isOwnedLocallyInHierarchy)
+        {
+            gameObject.transform.localScale = new Vector3(scale, scale, scale);
+        }
+
+        onScaleChange?.Invoke();
     }
 
     private void TeamChanged(NormPlayerModel model, int value)
