@@ -27,7 +27,7 @@ public class NormVRPlayer : MonoBehaviour
 
     private XROrigin _XROrigin;
 
-
+    private TeleportationProvider _teleportationProvider;
 
     private void Awake()
     {
@@ -45,9 +45,42 @@ public class NormVRPlayer : MonoBehaviour
         _XROrigin = _controller.GetComponentInChildren<XROrigin>();
         _XRRig = GameObject.FindGameObjectWithTag("XRRig");
 
+        _teleportationProvider = _XROrigin.GetComponent<TeleportationProvider>();
+        _teleportationProvider.beginLocomotion += OnTeleportStart;
+        _teleportationProvider.endLocomotion += OnTeleportEnd;
+
         if (ReInput.players != null)
         {
             _rewiredPlayer = ReInput.players.GetPlayer(playerId);
+        }
+    }
+
+    public void OnTeleportStart(LocomotionSystem system)
+    {
+        Debug.Log("Teleport Start");
+    }
+
+    public void OnTeleportEnd(LocomotionSystem system)
+    {
+        Debug.Log("Teleport End");
+
+        if (_normPlayer.Scale != 1f)
+        {
+            Debug.Log("Teleport Adjust for Scale");
+
+            Vector3 cameraInOriginSpace = _XROrigin.CameraInOriginSpacePos;
+
+            Vector3 cameraInOriginSpaceScaled = cameraInOriginSpace * _normPlayer.Scale;
+
+            Vector3 originPosition = _XROrigin.transform.position;
+
+            Vector3 fixedPosition = originPosition + cameraInOriginSpace - cameraInOriginSpaceScaled;
+
+            Debug.Log("cameraInOriginSpace: " + cameraInOriginSpace);
+            Debug.Log("cameraInOriginSpaceScaled: " + cameraInOriginSpaceScaled);
+            Debug.Log("fixedPosition: " + fixedPosition);
+
+            _XROrigin.transform.position = new Vector3(fixedPosition.x, originPosition.y, fixedPosition.z);
         }
     }
 
@@ -61,8 +94,25 @@ public class NormVRPlayer : MonoBehaviour
 
         if (_realtimeView.isOwnedLocallyInHierarchy)
         {
+            Vector3 newPosition = _XROrigin.Camera.transform.position;
+
+            Vector3 cameraInOriginSpace = _XROrigin.CameraInOriginSpacePos;
+
+            Vector3 cameraInOriginSpaceScaled = cameraInOriginSpace * newScale;
+
+            newPosition -= cameraInOriginSpaceScaled;
+
+            GameObject cameraOffset = _XROrigin.CameraFloorOffsetObject;
+
+            Debug.Log("cameraInOriginSpace: " + cameraInOriginSpace + " cameraInOriginSpaceScaled: " + cameraInOriginSpaceScaled);
+
+            //Debug.DrawRay(_XROrigin.transform.position, cameraPosition, Color.red, 5f);
+
             _XROrigin.transform.localScale = scaleVector;
-            //behavior.Origin.CameraFloorOffsetObject.transform.localPosition = new Vector3(0, behavior.Origin.CameraYOffset * newScale, 0);
+
+            Vector3 originPositionAfterScale = _XROrigin.transform.position;
+
+            _XROrigin.transform.position = new Vector3(newPosition.x, originPositionAfterScale.y, newPosition.z);
         }
 
         //player.transform.localScale = scaleVector;

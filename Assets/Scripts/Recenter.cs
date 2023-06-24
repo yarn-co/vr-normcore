@@ -90,7 +90,7 @@ public class Recenter : MonoBehaviour
 
                 height = originScript.CameraInOriginSpaceHeight;
 
-                Debug.Log("Floor Mode Height: " + height);
+                //Debug.Log("Floor Mode Height: " + height);
 
                 if(height > 0)
                 {
