@@ -22,17 +22,20 @@ public class NormShuffleboard : MonoBehaviour
 
     public GameObject XRRig;
 
-    public Vector3 smallScale = new Vector3(0.1f, 0.1f, 0.1f);
-
     public Spacebar.Realtime.RealtimeAvatarManager RealtimeAvatarManager;
     public Spacebar.Realtime.RealtimeAvatar localAvatar;
 
     public bool buttonPress = false;
 
+    private float[] scales = { 1f, 0.05f, 1f, 5f};
+    private int currentScale = 0;
+
     private Normal.Realtime.Realtime Realtime;
 
     void Awake()
     {
+        scales[0] = 1f; 
+        
         Realtime = GetComponent<Normal.Realtime.Realtime>();
 
         XRRig = GameObject.FindGameObjectWithTag("XRRig");
@@ -42,7 +45,6 @@ public class NormShuffleboard : MonoBehaviour
 
     void Start()
     {
-        
         secondaryButtonAction.action.AddBinding("<XRController>{RightHand}/secondaryButton");
         secondaryButtonAction.action.AddBinding("<XRController>{LeftHand}/secondaryButton");
         secondaryButtonAction.action.Enable();
@@ -67,14 +69,11 @@ public class NormShuffleboard : MonoBehaviour
 
                     NormPlayer normPlayer = localAvatar.GetComponent<NormPlayer>();
 
-                    if (normPlayer.Scale == 1)
-                    {
-                        normPlayer.Scale = 0.1f;
-                    }
-                    else
-                    {
-                        normPlayer.Scale = 1;
-                    }
+                    currentScale++;
+
+                    if (currentScale >= scales.Length) currentScale = 0;
+
+                    normPlayer.Scale = scales[currentScale];
                 }
             }
         }
