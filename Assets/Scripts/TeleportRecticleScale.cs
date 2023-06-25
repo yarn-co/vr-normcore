@@ -9,8 +9,7 @@ public class TeleportRecticleScale : MonoBehaviour
     
     public bool isLocal = true;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         GameObject controller = GameObject.FindGameObjectWithTag("GameController");
 
@@ -19,25 +18,18 @@ public class TeleportRecticleScale : MonoBehaviour
         if (isLocal)
         {
             _normPlayer = avatarManager.localAvatar.GetComponent<NormPlayer>();
+            OnScaleChanged();
         }
 
         _normPlayer.onScaleChange += OnScaleChanged;
-
-        Debug.Log("TeleportRecticleScale Start: " + _normPlayer);
     }
 
     public void OnScaleChanged()
     {
-        Debug.Log("TeleportRecticleScale OnScaleChanged: " + _normPlayer.Scale);
+        //Debug.Log("TeleportRecticleScale OnScaleChanged: " + _normPlayer.Scale);
         
         float scale = _normPlayer.Scale;
 
         gameObject.transform.localScale = new Vector3(scale, scale, scale);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

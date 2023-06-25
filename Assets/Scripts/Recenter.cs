@@ -12,13 +12,15 @@ public class Recenter : MonoBehaviour
 {
     public GameObject Origin;
 
-    private XROrigin originScript;
+    private XROrigin origin;
 
     private GameObject mainCamera;
 
     private XRSubSystems xrSystems;
 
     private bool started = false;
+
+    private bool firstTime = true;
 
     private bool switching = false;
 
@@ -38,7 +40,7 @@ public class Recenter : MonoBehaviour
 
         xrSystems = GetComponent<XRSubSystems>();
 
-        originScript = Origin.GetComponent<XROrigin>();
+        origin = Origin.GetComponent<XROrigin>();
 
         mainCamera = GameObject.FindWithTag("MainCamera");
 
@@ -62,7 +64,7 @@ public class Recenter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        testHeight = originScript.CameraInOriginSpaceHeight;
+        testHeight = origin.CameraInOriginSpaceHeight;
 
         //HeightHistory.AddEntry(testHeight);
 
@@ -70,7 +72,7 @@ public class Recenter : MonoBehaviour
         {
             if (xrSystems.xrInput != null)
             {
-                Debug.Log("HAS XR INPUT SYSTEM");
+                Debug.Log("HAS XR INPUT SYSTEM! Camera Height: " + testHeight);
 
                 started = true;
 
@@ -84,11 +86,13 @@ public class Recenter : MonoBehaviour
 
         if (recentering)
         {
-            if (originScript.CurrentTrackingOriginMode.ToString() == "Floor" && !switching){
+            Debug.Log("Recentering...");
 
-                originScript.CameraYOffset = 0;
+            if (origin.CurrentTrackingOriginMode.ToString() == "Floor" && !switching){
 
-                height = originScript.CameraInOriginSpaceHeight;
+                origin.CameraYOffset = 0;
+
+                height = origin.CameraInOriginSpaceHeight;
 
                 //Debug.Log("Floor Mode Height: " + height);
 
@@ -98,16 +102,16 @@ public class Recenter : MonoBehaviour
                 }
             }
 
-            if(originScript.CurrentTrackingOriginMode.ToString() == "Floor" && height > 0){
+            if(origin.CurrentTrackingOriginMode.ToString() == "Floor" && height > 0){
 
                 Debug.Log("Switching to Device");
 
                 switching = true;
 
-                originScript.RequestedTrackingOriginMode = XROrigin.TrackingOriginMode.Device;
+                origin.RequestedTrackingOriginMode = XROrigin.TrackingOriginMode.Device;
             }
             
-            if(originScript.CurrentTrackingOriginMode.ToString() == "Device" && (height > 0 || cameraHeight != 0))
+            if(origin.CurrentTrackingOriginMode.ToString() == "Device" && (height > 0 || cameraHeight != 0))
             {
                 if (cameraHeight != 0)
                 {
@@ -126,8 +130,14 @@ public class Recenter : MonoBehaviour
 
                 Debug.Log("Set Height: " + height);
 
-                originScript.CameraYOffset = height;
+                origin.CameraYOffset = height;
 
+                if (firstTime)
+                {
+                    origin.MoveCameraToWorldLocation(new Vector3(0, height, 0));
+
+                    firstTime = false;
+                }
                 switching = false;
 
                 recentering = false;
@@ -139,7 +149,7 @@ public class Recenter : MonoBehaviour
     {
         recentering = true;
 
-        cameraHeight = originScript.CameraInOriginSpaceHeight;
+        cameraHeight = origin.CameraInOriginSpaceHeight;
 
         Debug.Log("Camera Local Height at Reset: " + cameraHeight);
 

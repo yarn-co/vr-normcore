@@ -74,7 +74,7 @@ public class NormVRPlayer : MonoBehaviour
 
             Vector3 originPosition = _XROrigin.transform.position;
 
-            Vector3 fixedPosition = originPosition + cameraInOriginSpace - cameraInOriginSpaceScaled;
+            Vector3 fixedPosition =  originPosition + (_XROrigin.transform.rotation * (cameraInOriginSpace - cameraInOriginSpaceScaled));
 
             Debug.Log("cameraInOriginSpace: " + cameraInOriginSpace);
             Debug.Log("cameraInOriginSpaceScaled: " + cameraInOriginSpaceScaled);
@@ -86,7 +86,7 @@ public class NormVRPlayer : MonoBehaviour
 
     public void OnScaleChange()
     {
-        Debug.Log("NormVRPlayer OnScaleChange: " + _normPlayer.Scale);
+        //Debug.Log("NormVRPlayer OnScaleChange: " + _normPlayer.Scale);
 
         float newScale = _normPlayer.Scale;
 
@@ -98,15 +98,13 @@ public class NormVRPlayer : MonoBehaviour
 
             Vector3 cameraInOriginSpace = _XROrigin.CameraInOriginSpacePos;
 
-            Vector3 cameraInOriginSpaceScaled = cameraInOriginSpace * newScale;
+            Vector3 cameraInOriginSpaceScaled = _XROrigin.transform.rotation * (cameraInOriginSpace * newScale);
 
             newPosition -= cameraInOriginSpaceScaled;
 
             GameObject cameraOffset = _XROrigin.CameraFloorOffsetObject;
 
-            Debug.Log("cameraInOriginSpace: " + cameraInOriginSpace + " cameraInOriginSpaceScaled: " + cameraInOriginSpaceScaled);
-
-            //Debug.DrawRay(_XROrigin.transform.position, cameraPosition, Color.red, 5f);
+            //Debug.Log("cameraInOriginSpace: " + cameraInOriginSpace + " cameraInOriginSpaceScaled: " + cameraInOriginSpaceScaled);
 
             _XROrigin.transform.localScale = scaleVector;
 
