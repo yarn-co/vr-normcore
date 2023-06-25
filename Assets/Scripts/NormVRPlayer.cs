@@ -76,9 +76,9 @@ public class NormVRPlayer : MonoBehaviour
 
             Vector3 fixedPosition =  originPosition + (_XROrigin.transform.rotation * (cameraInOriginSpace - cameraInOriginSpaceScaled));
 
-            Debug.Log("cameraInOriginSpace: " + cameraInOriginSpace);
-            Debug.Log("cameraInOriginSpaceScaled: " + cameraInOriginSpaceScaled);
-            Debug.Log("fixedPosition: " + fixedPosition);
+            //Debug.Log("cameraInOriginSpace: " + cameraInOriginSpace);
+            //Debug.Log("cameraInOriginSpaceScaled: " + cameraInOriginSpaceScaled);
+            //Debug.Log("fixedPosition: " + fixedPosition);
 
             _XROrigin.transform.position = new Vector3(fixedPosition.x, originPosition.y, fixedPosition.z);
         }

@@ -339,7 +339,7 @@ GameObject:
   - component: {fileID: 952020927334199898}
   - component: {fileID: 7997317623751191910}
   - component: {fileID: 776045023913785186}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TeleportCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
