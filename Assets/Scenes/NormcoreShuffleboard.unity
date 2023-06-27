@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.10955873, g: 0.0023590669, b: 0.206979, a: 1}
+  m_IndirectSpecularColor: {r: 0.1095518, g: 0.00234995, b: 0.2069718, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -294,7 +294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4cbd90a65e7b754c81cf026a6ae2974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenMode: 0
+  screenMode: 1
   screenController: {fileID: 1489392485}
   screenHead: {fileID: 0}
   screenAvatarPrefab: {fileID: 5270862196115881026, guid: 7c0f52c317601134ca23db2321281b74,
@@ -1752,7 +1752,7 @@ PrefabInstance:
     - target: {fileID: 4438017795261353728, guid: 9a61da5eee6173f48bd11e181de939a8,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5208194035986632337, guid: 9a61da5eee6173f48bd11e181de939a8,
         type: 3}
@@ -2986,7 +2986,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1489392486
 Transform:
   m_ObjectHideFlags: 0
@@ -4054,6 +4054,16 @@ PrefabInstance:
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 89443250}
+    - target: {fileID: 3222084860453877239, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
+        type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 89443250}
+    - target: {fileID: 3222084860453877239, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
+        type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClearPucks
+      objectReference: {fileID: 0}
     - target: {fileID: 3317706343825576595, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
         type: 3}
       propertyPath: m_InteractionManager
@@ -4099,6 +4109,16 @@ PrefabInstance:
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 89443250}
+    - target: {fileID: 7844590355417539678, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
+        type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 89443250}
+    - target: {fileID: 7844590355417539678, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
+        type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MakePuckForBlueTwo
+      objectReference: {fileID: 0}
     - target: {fileID: 8246927264294097123, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
         type: 3}
       propertyPath: m_InteractionManager
