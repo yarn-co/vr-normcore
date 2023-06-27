@@ -159,13 +159,15 @@ public class XRHand : MonoBehaviour
                 _handSync.handModel.primaryTouch = primaryTouch;
                 _handSync.handModel.secondaryTouch = secondaryTouch;
 
-                //Debug.Log(_handSync.handModel.indexValue);
-
+                //Debug.Log("Set Remote Controller indexValue: " + _handSync.handModel.indexValue);
             }
         }
 
-        if (isRealtimeTrackedVersion)
+        //
+        if (isRealtimeTrackedVersion && !_realtimeView.isOwnedLocallyInHierarchy)
         {
+            //Debug.Log("Remote Controller indexValue: " + _handSync.handModel.indexValue);
+            
             indexValue = _handSync.handModel.indexValue;
             gripValue = _handSync.handModel.gripValue;
             primaryTouch = _handSync.handModel.primaryTouch;

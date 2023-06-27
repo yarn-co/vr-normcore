@@ -4,6 +4,7 @@ using Rewired;
 using Unity.XR.CoreUtils;
 using static UnityEngine.UI.Image;
 using UnityEngine.XR.Interaction.Toolkit;
+using Unity.VisualScripting;
 
 public class NormVRPlayer : MonoBehaviour
 {
@@ -125,6 +126,19 @@ public class NormVRPlayer : MonoBehaviour
         SkinnedMeshRenderer rightHandMesh = _realtimeAvatar.rightHand.gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
 
         rightHandMesh.material.color = _colorSync._model.color;
+
+        if (_realtimeView.isOwnedLocallyInHierarchy)
+        {
+            XRHand[] localHands = _XROrigin.GetComponentsInChildren<XRHand>();
+            
+            foreach(XRHand localHand in localHands)
+            {
+                SkinnedMeshRenderer handMesh = localHand.GetComponentInChildren<SkinnedMeshRenderer>();
+                handMesh.material.color = _colorSync._model.color;
+            }
+
+            //Debug.Log("Changing Color of Local Player Hands: " + localHands);
+        }
     }
 
     private void Start()

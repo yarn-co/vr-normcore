@@ -33,9 +33,7 @@ public class NormShuffleboard : MonoBehaviour
     private Normal.Realtime.Realtime Realtime;
 
     void Awake()
-    {
-        scales[0] = 1f; 
-        
+    {        
         Realtime = GetComponent<Normal.Realtime.Realtime>();
 
         XRRig = GameObject.FindGameObjectWithTag("XRRig");
@@ -65,8 +63,6 @@ public class NormShuffleboard : MonoBehaviour
 
                 if (localAvatar != null)
                 {
-                    Debug.Log("Shrink/Grow");
-
                     NormPlayer normPlayer = localAvatar.GetComponent<NormPlayer>();
 
                     currentScale++;
@@ -140,7 +136,8 @@ public class NormShuffleboard : MonoBehaviour
 
         foreach (GameObject puckX in pucks)
         {
-            Destroy(puckX);
+            //puckX.GetComponent<RealtimeTransform>().RequestOwnership();
+            Realtime.Destroy(puckX);
         }
     }
 
