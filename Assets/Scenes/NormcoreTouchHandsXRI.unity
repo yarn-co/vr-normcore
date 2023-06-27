@@ -137,6 +137,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: XRSetup
       objectReference: {fileID: 0}
+    - target: {fileID: 4438017795261353728, guid: 9a61da5eee6173f48bd11e181de939a8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5208194035986632337, guid: 9a61da5eee6173f48bd11e181de939a8,
         type: 3}
       propertyPath: m_RootOrder
@@ -248,7 +253,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &572254552
 Transform:
   m_ObjectHideFlags: 0
@@ -397,12 +402,12 @@ MonoBehaviour:
   m_BindingMode: 5
   m_SplineCurvature: 0.2
   m_Orbits:
-  - m_Height: 2.13437
-    m_Radius: 0.1067185
-  - m_Height: 1.067185
-    m_Radius: 2.561244
-  - m_Height: 0.0213437
-    m_Radius: 0.426874
+  - m_Height: 15
+    m_Radius: 0.5
+  - m_Height: 8
+    m_Radius: 15
+  - m_Height: 0.1
+    m_Radius: 0.5
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
   - {fileID: 947232102}
@@ -654,7 +659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 1.067185, z: -2.561244}
+  m_FollowOffset: {x: 0, y: 8, z: -15}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -781,7 +786,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 1.067185, z: -2.561244}
+  m_FollowOffset: {x: 0, y: 8, z: -15}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -908,7 +913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 1.067185, z: -2.561244}
+  m_FollowOffset: {x: 0, y: 8, z: -15}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -3584,7 +3589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4cbd90a65e7b754c81cf026a6ae2974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenMode: 0
+  screenMode: 1
   screenController: {fileID: 572254551}
   screenHead: {fileID: 0}
   screenAvatarPrefab: {fileID: 5270862196115881026, guid: 7c0f52c317601134ca23db2321281b74,
