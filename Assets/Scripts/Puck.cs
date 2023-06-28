@@ -12,8 +12,31 @@ public class Puck : MonoBehaviour
 
     public TextMeshPro text;
 
-    public int side = 1;
     public int team = 0;
+    public int Team
+    {
+        get
+        {
+            return team;
+        }
+        set
+        {
+            SetTeam(value);
+        }
+    }
+
+    public int side = 1;
+    public int Side
+    {
+        get
+        {
+            return side;
+        }
+        set
+        {
+            side = value;
+        }
+    }
 
     // Start is called before the first frame update
     void Awake()
@@ -26,13 +49,13 @@ public class Puck : MonoBehaviour
         text.text = "";
     }
 
-    public void SetTeam(int newTeam)
+    public void SetTeam(int value)
     {
-        Debug.Log("Puck SetTeam: " +  newTeam);
+        Debug.Log("Puck SetTeam: " + value);
 
-        team = newTeam;
+        team = value;
 
-        if (newTeam == 1)
+        if (value == 1)
         {
             myRenderer.material = TeamOneMaterial;
         }

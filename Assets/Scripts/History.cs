@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 class History<T>
 {
-    Queue<T> data;
+    public Queue<T> data;
     public int MaxCapacity { get; private set; }
 
     public History(int maxCapacity)
