@@ -5,6 +5,7 @@ using Unity.XR.CoreUtils;
 using UnityEngine.XR;
 using Cinemachine;
 using System.Drawing;
+using LeiaLoft;
 
 namespace Spacebar.Realtime
 {
@@ -18,6 +19,10 @@ namespace Spacebar.Realtime
 
         private PlayerModeSwitcher _modeSwitcher;
 
+        private Camera _mainCamera;
+
+        public LeiaCamera LeiaCamera;
+
         public CinemachineFreeLook CMFreeLook;
 
         public bool userPresent = false;
@@ -30,6 +35,8 @@ namespace Spacebar.Realtime
             _avatarManager = GetComponent<RealtimeAvatarManager>();
 
             _modeSwitcher = GetComponent<PlayerModeSwitcher>();
+
+            _mainCamera = Camera.main;
 
             bool present = IsVRUserPresent();
         }
@@ -64,6 +71,13 @@ namespace Spacebar.Realtime
                 Debug.Log("Got local avatar");
 
                 GotAvatar();
+            }
+
+            if(_avatar != null && LeiaCamera != null)
+            {
+                Vector3 cameraDistanceToAvatar = _mainCamera.transform.position - _avatar.transform.position;
+
+                LeiaCamera.ConvergenceDistance = cameraDistanceToAvatar.magnitude;
             }
         }
 
