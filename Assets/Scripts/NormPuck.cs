@@ -93,12 +93,6 @@ public class NormPuck : RealtimeComponent<NormPuckModel>
                 Team = _model.team;
                 Side = _model.side;
             }
-
-            // Update the mesh render to match the new model
-            //UpdateMeshRendererColor();
-
-            // Register for events so we'll know if the color changes later
-            //currentModel.colorDidChange += ColorDidChange;
         }
     }
 
