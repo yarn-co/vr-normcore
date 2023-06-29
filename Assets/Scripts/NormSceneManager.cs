@@ -75,9 +75,9 @@ namespace Spacebar.Realtime
 
             if(_avatar != null && LeiaCamera != null)
             {
-                Vector3 cameraDistanceToAvatar = _mainCamera.transform.position - _avatar.transform.position;
+                //Vector3 cameraDistanceToAvatar = _mainCamera.transform.position - _avatar.transform.position;
 
-                LeiaCamera.ConvergenceDistance = cameraDistanceToAvatar.magnitude;
+                //LeiaCamera.ConvergenceDistance = cameraDistanceToAvatar.magnitude;
             }
         }
 
@@ -143,6 +143,11 @@ namespace Spacebar.Realtime
 
                 CMFreeLook.LookAt = _avatar.gameObject.transform;
                 CMFreeLook.Follow = _avatar.gameObject.transform;
+
+                if(LeiaCamera != null)
+                {
+                    Camera.main.GetComponent<LeiaTargetFocus>().target = _avatar.gameObject;
+                }
 
                 // Get the constraint used to position the camera behind the player
                 //ParentConstraint cameraConstraint = _camera.GetComponent<ParentConstraint>();

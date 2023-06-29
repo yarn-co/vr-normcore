@@ -3545,6 +3545,7 @@ GameObject:
   - component: {fileID: 1958959078}
   - component: {fileID: 1958959077}
   - component: {fileID: 1958959082}
+  - component: {fileID: 1958959083}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3740,6 +3741,40 @@ MonoBehaviour:
   _cameraShift: {x: 0, y: 0, z: 0}
   _renderObject: {fileID: 0}
   peelControls: {x: 1, y: 1, z: 0, w: 0}
+--- !u!114 &1958959083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958959075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 312ee01aaeef2a0438f11f94cd0b0fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _baselineRange:
+    _min: 1
+    _lifetimeMin: 0
+    _minLabel: MinBaseline
+    _max: 10
+    _lifetimeMax: 100
+    _maxLabel: MaxBaseline
+  _convergenceRange:
+    _min: 1
+    _lifetimeMin: 0.00001
+    _minLabel: MinConvergence
+    _max: 1000
+    _lifetimeMax: 10000000
+    _maxLabel: MaxConvergence
+  _depthScale: 1
+  convergenceChangeThreshold: 0.01
+  baselineChangeThreshold: 0.05
+  _convergenceFocusSpeed: 0.5
+  _baselineFocusSpeed: 0.1
+  _focusOffset: 0
+  samples: 200
+  _target: {fileID: 0}
 --- !u!1001 &1964242214
 PrefabInstance:
   m_ObjectHideFlags: 0

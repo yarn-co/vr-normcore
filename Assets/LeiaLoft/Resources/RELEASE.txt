@@ -3,8 +3,8 @@ RELEASE NOTES
 
 Product: Leia Unity Plugin
 
-Version: 2.2.2
-   Date: 13 June 2023
+Version: 2.2.3
+   Date: 29 June 2023
 CNSDK: 0.6.169
 
 OVERVIEW
@@ -32,6 +32,10 @@ Many known issues with Unity are specific to a non-LTS version of Unity. We reco
 WHAT'S NEW
 ==========
 
+
+2.2.3
+    
+    Fixed an issue with camera permissions dialog appearing when it shouldn't
 
 2.2.2
     

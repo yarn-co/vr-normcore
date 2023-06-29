@@ -299,7 +299,6 @@ public class EyeTracking : Singleton<EyeTracking>
                     predictedFaceX = faceX;
                     predictedFaceY = faceY;
                     predictedFaceZ = faceZ;
-                    Debug.Log("Gets Here EyeTracking setting predictedFacePosition to " + this.GetPredictedFacePosition());
                 }
 
                 if (faceTransitionState == FaceTrackingStateEngine.FaceTransitionState.SlidingCameras

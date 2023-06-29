@@ -18,18 +18,7 @@ public class EyeTrackingAndroid : EyeTracking
     protected override void UpdateCameraConnectedStatus()
     {
         _cameraConnectedPrev = _cameraConnected;
-        _cameraConnected = false;
-        WebCamDevice[] devices = WebCamTexture.devices;
-        for (int i = 0; i < devices.Length; i++)
-        {
-            // TODO: do we need to support realsense on Android?
-            if (devices[i].name.Contains("Camera 1"))
-            {
-                _cameraConnected = true;
-                break;
-            }
-        }
-
+        _cameraConnected = true;
         base.UpdateCameraConnectedStatus();
     }
 
