@@ -1499,7 +1499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 3.225, z: -0.43}
+  m_FollowOffset: {x: 0, y: 15, z: -2}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -1984,12 +1984,12 @@ MonoBehaviour:
   m_BindingMode: 5
   m_SplineCurvature: 0.2
   m_Orbits:
-  - m_Height: 3.225
-    m_Radius: 0.43
-  - m_Height: 1.6125
-    m_Radius: 3.225
-  - m_Height: 0.0043
-    m_Radius: 0.43
+  - m_Height: 15
+    m_Radius: 2
+  - m_Height: 7.5
+    m_Radius: 15
+  - m_Height: 0.2
+    m_Radius: 2
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
   - {fileID: 1297726450}
@@ -2918,7 +2918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 3.225, z: -0.43}
+  m_FollowOffset: {x: 0, y: 15, z: -2}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -3733,7 +3733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraZaxisMovement: 0
   mViewportRectFillTechnique: 0
-  _disparityScaling: 1
+  _disparityScaling: 0.1
   _cameraShiftScaling: 1
   _convergenceDistance: 3.96
   _drawCameraBounds: 1
@@ -4079,7 +4079,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 3.225, z: -0.43}
+  m_FollowOffset: {x: 0, y: 15, z: -2}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
