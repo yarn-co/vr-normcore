@@ -113,6 +113,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         /// <inheritdoc />
         protected override Vector3 ComputeDesiredMove(Vector2 input)
         {
+
             //return Vector3.zero;
 
             // Don't need to do anything if the total input is zero.
@@ -128,8 +129,22 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
                 {
                     var xrCamera = xrOrigin.Camera;
                     if (xrCamera != null)
+                    {
                         m_HeadTransform = xrCamera.transform;
+                    }
+                    else
+                    {
+                        Debug.Log($"m_HeadTransform: {m_HeadTransform}");
+                    }
                 }
+                else
+                {
+                    Debug.Log($"xrOrigin: {xrOrigin}");
+                }
+            }
+            else
+            {
+                Debug.Log($"m_HeadTransform: {m_HeadTransform}");
             }
 
             // Get the forward source for the left hand input
@@ -175,6 +190,9 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             // Combine the two poses into the forward source based on the magnitude of input
             var leftHandValue = leftHandMoveAction.action?.ReadValue<Vector2>() ?? Vector2.zero;
             var rightHandValue = rightHandMoveAction.action?.ReadValue<Vector2>() ?? Vector2.zero;
+            //Check inputs
+            Debug.Log($"Left hand input: {leftHandValue}");
+            Debug.Log($"Right hand input: {rightHandValue}");
 
             var totalSqrMagnitude = leftHandValue.sqrMagnitude + rightHandValue.sqrMagnitude;
             var leftHandBlend = 0.5f;

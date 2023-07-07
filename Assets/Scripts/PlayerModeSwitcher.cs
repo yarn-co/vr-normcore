@@ -174,6 +174,18 @@ public class PlayerModeSwitcher : MonoBehaviour
             avatar.localPlayer.head = XRHead;
             avatar.localPlayer.leftHand = XRLeftHand;
             avatar.localPlayer.rightHand = XRRightHand;
+
+            // Get the PlayerRespawn script from the avatar's GameObject.
+            PlayerRespawn respawnScript = avatar.gameObject.GetComponent<PlayerRespawn>();
+            // If the avatar has a PlayerRespawn script, set its xrRig field.
+            if (respawnScript != null)
+            {
+                respawnScript.SetXRRig(XRRig.transform);
+            }
+            else
+            {
+                Debug.LogWarning("Avatar does not have a PlayerRespawn script.");
+            }
         }
     }
 }
