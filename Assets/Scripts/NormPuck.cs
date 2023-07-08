@@ -29,7 +29,7 @@ public class NormPuck : RealtimeComponent<NormPuckModel>
     public AudioSource dragSound;
     public AudioSource tableNockSound;
 
-    private int team = 0;
+    public int team = 0;
     public int Team {
         get
         {
@@ -37,14 +37,15 @@ public class NormPuck : RealtimeComponent<NormPuckModel>
         }
         set
         {
-            //Debug.Log("NormPuck SetTeam: " + value);
+            Debug.Log("NormPuck SetTeam: " + value);
 
             team = value;
-            _puck.SetTeam(value);
+            _puck.Team = value;
+            _model.team = value;
         }
     }
 
-    private int side = 1;
+    public int side = 1;
     public int Side
     {
         get
@@ -53,10 +54,11 @@ public class NormPuck : RealtimeComponent<NormPuckModel>
         }
         set
         {
-            //Debug.Log("NormPuck SetSide: " + value);
+            Debug.Log("NormPuck SetSide: " + value);
 
             side = value;
             _puck.side = value;
+            _model.side = value;
         }
     }
 
@@ -86,25 +88,25 @@ public class NormPuck : RealtimeComponent<NormPuckModel>
                 _model.side = Side;
                 _model.collisionCount = 0;
             }
-
-            // Update the mesh render to match the new model
-            //UpdateMeshRendererColor();
-
-            // Register for events so we'll know if the color changes later
-            //currentModel.colorDidChange += ColorDidChange;
+            else
+            {
+                Team = _model.team;
+                Side = _model.side;
+            }
         }
     }
 
     private void TeamChanged(NormPuckModel model, int value)
     {
-        //Debug.Log("TeamChanged: " + value);
+        Debug.Log("TeamChanged: " + value);
 
-        Team = value;
+        team = value;
+        _puck.team = value;
     }
 
     private void IsOnTableChanged(NormPuckModel model, bool isOnTable)
     {
-        //Debug.Log("isOnTableChanged: " + isOnTable);
+        Debug.Log("isOnTableChanged: " + isOnTable);
 
         if (isOnTable)
         {
@@ -136,7 +138,7 @@ public class NormPuck : RealtimeComponent<NormPuckModel>
 
     void Start()
     {
-        Debug.Log("NetworkPuck Start");
+        Debug.Log("NormPuck Start");
 
         text.text = "";
     }

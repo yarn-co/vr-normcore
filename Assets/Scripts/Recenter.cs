@@ -44,8 +44,6 @@ public class Recenter : MonoBehaviour
 
         mainCamera = GameObject.FindWithTag("MainCamera");
 
-        
-
         Reset();
     }
 
@@ -66,8 +64,6 @@ public class Recenter : MonoBehaviour
     {
         testHeight = origin.CameraInOriginSpaceHeight;
 
-        //HeightHistory.AddEntry(testHeight);
-
         if (!started)
         {
             if (xrSystems.xrInput != null)
@@ -86,7 +82,7 @@ public class Recenter : MonoBehaviour
 
         if (recentering)
         {
-            Debug.Log("Recentering...");
+            //Debug.Log("Recentering...");
 
             if (origin.CurrentTrackingOriginMode.ToString() == "Floor" && !switching){
 
@@ -94,7 +90,7 @@ public class Recenter : MonoBehaviour
 
                 height = origin.CameraInOriginSpaceHeight;
 
-                //Debug.Log("Floor Mode Height: " + height);
+                Debug.Log("Floor Mode Height: " + height);
 
                 if(height > 0)
                 {
@@ -117,31 +113,42 @@ public class Recenter : MonoBehaviour
                 {
                     Debug.Log("Using Stored Camera Height");
 
-                    float pastHeight = HeightHistory.Peek();
+                    if (HeightHistory.data.Count > 0)
+                    {
+                        float pastHeight = HeightHistory.Peek();
 
-                    Debug.Log("Past Height: " + pastHeight);
+                        Debug.Log("Past Height: " + pastHeight);
 
-                    height = pastHeight;
+                        height = pastHeight;
 
-                    cameraHeight = 0;
+                        cameraHeight = 0;
+                    }
                 }
 
-                Debug.Log("End Recentering: " + height);
+                
 
-                Debug.Log("Set Height: " + height);
+                //Debug.Log("Set Height: " + height);
 
                 origin.CameraYOffset = height;
 
                 if (firstTime)
                 {
-                    origin.MoveCameraToWorldLocation(new Vector3(0, height, 0));
+                    //origin.transform.position = new Vector3(origin.transform.position.x, 0, origin.transform.position.z);
+
+                    origin.MoveCameraToWorldLocation(new Vector3(0, origin.CameraInOriginSpacePos.y, 0));
 
                     firstTime = false;
                 }
                 switching = false;
 
                 recentering = false;
+
+                Debug.Log("End Recentering: " + height);
             }
+        }
+        else
+        {
+            HeightHistory.AddEntry(testHeight);
         }
     }
 
@@ -151,8 +158,8 @@ public class Recenter : MonoBehaviour
 
         cameraHeight = origin.CameraInOriginSpaceHeight;
 
-        Debug.Log("Camera Local Height at Reset: " + cameraHeight);
+        //HeightHistory.AddEntry(cameraHeight);
 
-        //originScript.RequestedTrackingOriginMode = XROrigin.TrackingOriginMode.Floor;
+        Debug.Log("Camera Local Height at Reset: " + cameraHeight);
     }
 }
