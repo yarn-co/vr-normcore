@@ -12,6 +12,11 @@ TagManager:
   - Table
   - Influence
   - XRRig
+  - Death
+  - Ground
+  - EnemyPlatform
+  - Type1
+  - Type2
   layers:
   - Default
   - TransparentFX

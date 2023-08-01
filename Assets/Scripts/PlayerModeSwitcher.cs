@@ -6,6 +6,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.XR.Management;
 using Spacebar.Realtime;
+using TMPro;
 
 public class PlayerModeSwitcher : MonoBehaviour
 {
@@ -29,6 +30,12 @@ public class PlayerModeSwitcher : MonoBehaviour
     
     public Spacebar.Realtime.RealtimeAvatarManager avatarManager;
     public bool isXRMode = false;
+
+    public TMP_Text initialText;
+    public GameObject arrowPrefab;  // Assign this in the Inspector
+    private GameObject arrowInstance;
+    public GameObject arrowTarget;
+    private Transform cameraTransform;
 
     private void Awake()
     {
@@ -175,6 +182,11 @@ public class PlayerModeSwitcher : MonoBehaviour
             avatar.localPlayer.leftHand = XRLeftHand;
             avatar.localPlayer.rightHand = XRRightHand;
 
+            cameraTransform = Camera.main.transform;
+            StartCoroutine(DisplayInitialText());
+            StartCoroutine(SpawnInitialArrow(arrowTarget.transform));
+            
+            /*
             // Get the PlayerRespawn script from the avatar's GameObject.
             PlayerRespawn respawnScript = avatar.gameObject.GetComponent<PlayerRespawn>();
             // If the avatar has a PlayerRespawn script, set its xrRig field.
@@ -186,6 +198,38 @@ public class PlayerModeSwitcher : MonoBehaviour
             {
                 Debug.LogWarning("Avatar does not have a PlayerRespawn script.");
             }
+            */
         }
+    }
+
+    public void RemoveArrow()
+    {
+        if (arrowInstance != null)
+        {
+            Destroy(arrowInstance);
+            arrowInstance = null;
+        }
+    }
+
+    IEnumerator SpawnInitialArrow(Transform targetTransform)
+    {
+        arrowInstance = Instantiate(arrowPrefab, cameraTransform);
+        arrowInstance.transform.localPosition = new Vector3(0, 0, 3);
+        arrowInstance.transform.localRotation = Quaternion.identity;
+        Debug.Log("Arrow instantiated." + arrowInstance.transform);
+
+        ArrowPointer arrowPointer = arrowInstance.GetComponent<ArrowPointer>();
+        arrowPointer.SetTarget(targetTransform);
+
+        yield return new WaitForSeconds(20f);
+
+        RemoveArrow();
+    }
+
+    IEnumerator DisplayInitialText()
+    {
+        initialText.text = "Welcome to Level 1! <color=black>Your objective is to reach the green platform.</color>";
+        yield return new WaitForSeconds(10.0f);
+        initialText.text = "";
     }
 }

@@ -134,17 +134,17 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
                     }
                     else
                     {
-                        Debug.Log($"m_HeadTransform: {m_HeadTransform}");
+                        //Debug.Log($"m_HeadTransform: {m_HeadTransform}");
                     }
                 }
                 else
                 {
-                    Debug.Log($"xrOrigin: {xrOrigin}");
+                    //Debug.Log($"xrOrigin: {xrOrigin}");
                 }
             }
             else
             {
-                Debug.Log($"m_HeadTransform: {m_HeadTransform}");
+                //Debug.Log($"m_HeadTransform: {m_HeadTransform}");
             }
 
             // Get the forward source for the left hand input
@@ -191,8 +191,6 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             var leftHandValue = leftHandMoveAction.action?.ReadValue<Vector2>() ?? Vector2.zero;
             var rightHandValue = rightHandMoveAction.action?.ReadValue<Vector2>() ?? Vector2.zero;
             //Check inputs
-            Debug.Log($"Left hand input: {leftHandValue}");
-            Debug.Log($"Right hand input: {rightHandValue}");
 
             var totalSqrMagnitude = leftHandValue.sqrMagnitude + rightHandValue.sqrMagnitude;
             var leftHandBlend = 0.5f;
