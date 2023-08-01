@@ -2362,8 +2362,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpButton: {fileID: -8038864510197819475, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
-  normalJumpForce: 500
-  highJumpForce: 2500
+  normalJumpForce: 5000
+  highJumpForce: 75000
   powerUpText: {fileID: 231107444}
 --- !u!136 &316962560
 CapsuleCollider:
@@ -7405,7 +7405,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1329291629
 GameObject:
@@ -8340,7 +8340,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1450824320
 PrefabInstance:
