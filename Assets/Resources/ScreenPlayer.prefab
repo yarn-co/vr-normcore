@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 2452774884833393088}
   m_Layer: 0
   m_Name: ScreenPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -504,6 +504,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c25919e0704d4ee492f4222bda0303a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bounceForce: 500
+  bounceText: {fileID: 0}
+  RespawnPoint: {fileID: 0}
+  collectedNumbers: 
 --- !u!1 &5321253199860947656
 GameObject:
   m_ObjectHideFlags: 0

@@ -149,7 +149,7 @@ public class ScreenPlayer : MonoBehaviour
         if (_jumpThisFrame)
         {
             // Instantaneously set the vertical velocity to 6.0 m/s
-            velocity.y = 3.0f;
+            velocity.y = 30.0f;
 
             // Mark the player as currently jumping and clear the jump input
             _jumping = true;
