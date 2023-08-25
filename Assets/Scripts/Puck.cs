@@ -9,6 +9,7 @@ public class Puck : MonoBehaviour
     public Material TeamOneMaterial;
 
     private MeshRenderer myRenderer;
+    private Rigidbody myRigidbody;
 
     public TextMeshPro text;
 
@@ -42,6 +43,7 @@ public class Puck : MonoBehaviour
     void Awake()
     {
         myRenderer = GetComponent<MeshRenderer>();
+        myRigidbody = GetComponent<Rigidbody>();
     }
 
     void Start(){
@@ -63,6 +65,11 @@ public class Puck : MonoBehaviour
         {
             myRenderer.material = TeamZeroMaterial;
         }
+    }
+
+    public void FirstGrab()
+    {
+        myRigidbody.useGravity = true;
     }
 
     private void OnTriggerEnter(Collider other)

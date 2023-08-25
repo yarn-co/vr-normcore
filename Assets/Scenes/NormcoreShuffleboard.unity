@@ -145,7 +145,6 @@ GameObject:
   - component: {fileID: 89443246}
   - component: {fileID: 89443245}
   - component: {fileID: 89443244}
-  - component: {fileID: 89443250}
   m_Layer: 0
   m_Name: Controller
   m_TagString: GameController
@@ -346,35 +345,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &89443250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 89443243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61131285cb55ef645964eb7613cdd75e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puck: {fileID: 0}
-  secondaryButtonAction:
-    m_UseReference: 0
-    m_Action:
-      m_Name: Secondary Button
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: f6f296f3-a460-43bc-af61-35b80a3aa5d2
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 0}
-  XRRig: {fileID: 0}
-  RealtimeAvatarManager: {fileID: 0}
-  localAvatar: {fileID: 0}
-  buttonPress: 0
 --- !u!1001 &334570065
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4048,30 +4018,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1194788408}
     m_Modifications:
-    - target: {fileID: 779137197388354, guid: 2b8f12fda0df5ad4db5f7d1861de38dc, type: 3}
-      propertyPath: m_InteractionManager
-      value: 
-      objectReference: {fileID: 2054392248}
-    - target: {fileID: 95206761442309545, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_InteractionManager
-      value: 
-      objectReference: {fileID: 2054392248}
-    - target: {fileID: 95206761442309545, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 89443250}
-    - target: {fileID: 1488066879917839572, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 89443250}
-    - target: {fileID: 1488066879917839572, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: MakePuckForRedOne
-      objectReference: {fileID: 0}
     - target: {fileID: 2348824120389148304, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
         type: 3}
       propertyPath: m_RootOrder
@@ -4132,161 +4078,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShuffleboardMachine
       objectReference: {fileID: 0}
-    - target: {fileID: 2876914074507845687, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
+    - target: {fileID: 8695127591169209361, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
         type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      propertyPath: puck
       value: 
-      objectReference: {fileID: 89443250}
-    - target: {fileID: 2876914074507845687, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: MakePuckForBlueOne
       objectReference: {fileID: 0}
-    - target: {fileID: 3166725414937311038, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
+    - target: {fileID: 8695127591169209361, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
         type: 3}
-      propertyPath: m_InteractionManager
+      propertyPath: XRRig
       value: 
-      objectReference: {fileID: 2054392248}
-    - target: {fileID: 3166725414937311038, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
+      objectReference: {fileID: 787503922}
+    - target: {fileID: 8695127591169209361, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
         type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      propertyPath: Realtime
       value: 
-      objectReference: {fileID: 89443250}
-    - target: {fileID: 3222084860453877239, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
+      objectReference: {fileID: 89443248}
+    - target: {fileID: 8695127591169209361, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
         type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      propertyPath: RealtimeAvatarManager
       value: 
-      objectReference: {fileID: 89443250}
-    - target: {fileID: 3317706343825576595, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_InteractionManager
-      value: 
-      objectReference: {fileID: 2054392248}
-    - target: {fileID: 3609715233819558218, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_InteractionManager
-      value: 
-      objectReference: {fileID: 2054392248}
-    - target: {fileID: 3609715233819558218, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 89443250}
-    - target: {fileID: 4114210201474829259, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 89443250}
-    - target: {fileID: 4114210201474829259, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: ClearPucks
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493975078160845058, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 89443250}
-    - target: {fileID: 4493975078160845058, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: ClearPucks
-      objectReference: {fileID: 0}
-    - target: {fileID: 4699662676205347840, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_InteractionManager
-      value: 
-      objectReference: {fileID: 2054392248}
-    - target: {fileID: 4699662676205347840, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 89443250}
-    - target: {fileID: 4954001259966431661, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_InteractionManager
-      value: 
-      objectReference: {fileID: 2054392248}
-    - target: {fileID: 5360252559589732800, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 89443250}
-    - target: {fileID: 5360252559589732800, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: MakePuckForBlueTwo
-      objectReference: {fileID: 0}
-    - target: {fileID: 5559170006538203913, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 89443250}
-    - target: {fileID: 5559170006538203913, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: MakePuckForRedTwo
-      objectReference: {fileID: 0}
-    - target: {fileID: 6040001995087649013, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 89443250}
-    - target: {fileID: 6040001995087649013, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: ClearPucks
-      objectReference: {fileID: 0}
-    - target: {fileID: 6867113247529457385, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_InteractionManager
-      value: 
-      objectReference: {fileID: 2054392248}
-    - target: {fileID: 6867113247529457385, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 89443250}
-    - target: {fileID: 6960334367822703638, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 89443250}
-    - target: {fileID: 6960334367822703638, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: ClearPucks
-      objectReference: {fileID: 0}
-    - target: {fileID: 7753166364257314455, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_InteractionManager
-      value: 
-      objectReference: {fileID: 2054392248}
-    - target: {fileID: 7753166364257314455, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 89443250}
-    - target: {fileID: 7844590355417539678, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 89443250}
-    - target: {fileID: 8246927264294097123, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_InteractionManager
-      value: 
-      objectReference: {fileID: 2054392248}
-    - target: {fileID: 8246927264294097123, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 89443250}
-    - target: {fileID: 8613788551575336270, guid: 2b8f12fda0df5ad4db5f7d1861de38dc,
-        type: 3}
-      propertyPath: m_InteractionManager
-      value: 
-      objectReference: {fileID: 2054392248}
+      objectReference: {fileID: 89443246}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
