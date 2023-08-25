@@ -14,31 +14,30 @@ using UnityEngine.UIElements;
 
 public class NormShuffleboard : MonoBehaviour
 {
-    public GameObject puck;
+    private GameObject puck;
 
     private GameObject[] pucks;
 
-    public InputActionProperty secondaryButtonAction;
+    private InputActionProperty secondaryButtonAction;
 
     public GameObject XRRig;
-
     public Spacebar.Realtime.RealtimeAvatarManager RealtimeAvatarManager;
     public Spacebar.Realtime.RealtimeAvatar localAvatar;
 
-    public bool buttonPress = false;
+    private bool buttonPress = false;
 
     private float[] scales = { 1f, 0.05f, 1f, 5f};
     private int currentScale = 0;
 
-    private Normal.Realtime.Realtime Realtime;
+    public Normal.Realtime.Realtime Realtime;
 
     void Awake()
     {        
-        Realtime = GetComponent<Normal.Realtime.Realtime>();
+        //Realtime = GetComponent<Normal.Realtime.Realtime>();
 
-        XRRig = GameObject.FindGameObjectWithTag("XRRig");
+        //XRRig = GameObject.FindGameObjectWithTag("XRRig");
 
-        RealtimeAvatarManager = GetComponent<Spacebar.Realtime.RealtimeAvatarManager>();
+        //RealtimeAvatarManager = GetComponent<Spacebar.Realtime.RealtimeAvatarManager>();
     }
 
     void Start()
@@ -77,37 +76,11 @@ public class NormShuffleboard : MonoBehaviour
         {
             buttonPress = false;
         }
-}
-
-    public void MakePuckForRedOne()
-    {
-        MakePuck(0,1);
     }
 
-    public void MakePuckForBlueOne()
+
+    public GameObject MakePuck(int team, int side, Vector3 startingPosition)
     {
-        MakePuck(1,1);
-    }
-
-    public void MakePuckForRedTwo()
-    {
-        MakePuck(0, 2);
-    }
-
-    public void MakePuckForBlueTwo()
-    {
-        MakePuck(1, 2);
-    }
-
-    public void MakePuck(int team, int side)
-    {
-        float zPos = 0.4f;
-
-        if(side == 2)
-        {
-            zPos = 3.2f;
-        }
-
         GameObject newPuck = Normal.Realtime.Realtime.Instantiate("NormPuck", new Normal.Realtime.Realtime.InstantiateOptions
         {
             ownedByClient = false,
@@ -119,7 +92,7 @@ public class NormShuffleboard : MonoBehaviour
 
         newPuck.GetComponent<RealtimeTransform>().RequestOwnership();
 
-        Vector3 newPosition = new Vector3(0, 1f, zPos);
+        Vector3 newPosition = startingPosition;
 
         Debug.Log("Making Puck for Team: " + team + " Side: " + side);
 
@@ -127,6 +100,8 @@ public class NormShuffleboard : MonoBehaviour
         newPuck.GetComponent<Rigidbody>().position = newPosition;
         newPuck.GetComponent<NormPuck>().Team = team;
         newPuck.GetComponent<NormPuck>().Side = side;
+
+        return newPuck;
     }
 
     public void ClearPucks()
