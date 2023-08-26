@@ -304,7 +304,7 @@ MonoBehaviour:
   XRFixedUpdateMax: 90
   XRController: {fileID: 787503923}
   XRRig: {fileID: 787503922}
-  XRAvatarPrefab: {fileID: 1435502846325602, guid: 26adcf24b06575d4d904215995796da4,
+  XRAvatarPrefab: {fileID: 8564041693996781178, guid: 26adcf24b06575d4d904215995796da4,
     type: 3}
   XRHead: {fileID: 787503921}
   XRLeftHand: {fileID: 787503920}

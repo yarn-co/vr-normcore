@@ -20,7 +20,6 @@ public class NormPuck : RealtimeComponent<NormPuckModel>
 
     private MeshRenderer myRenderer;
     private Rigidbody myBody;
-    private NetworkShuffleboard shuffleboard;
 
     public Material TeamZeroMaterial;
     public Material TeamOneMaterial;

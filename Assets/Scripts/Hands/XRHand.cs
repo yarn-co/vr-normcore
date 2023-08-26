@@ -1,5 +1,4 @@
-﻿using Fusion.XR.Shared.Rig;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using Normal.Realtime;
 using System;
 using System.Collections;
